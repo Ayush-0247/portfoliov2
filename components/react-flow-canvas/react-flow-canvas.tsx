@@ -38,7 +38,7 @@ function Flow({ nodeTypes }: { nodeTypes: NodeTypes }) {
       }
       
       setTimeout(() => {
-        fitView({ duration: 800, padding: 0.15 });
+        fitView({ duration: 800, padding: 0.08 });
       }, 100);
     };
 
@@ -78,9 +78,9 @@ function Flow({ nodeTypes }: { nodeTypes: NodeTypes }) {
         onConnect={onConnect}
         fitView
         minZoom={0.1}
-        maxZoom={4}
+        maxZoom={5}
         fitViewOptions={{
-          padding: 0.2,
+          padding: 0.15,
           duration: 800, 
         }}
         style={{ backgroundImage: whiteDotBg }}
