@@ -38,7 +38,7 @@ function Flow({ nodeTypes }: { nodeTypes: NodeTypes }) {
       }
       
       setTimeout(() => {
-        fitView({ duration: 800, padding: 0.08 });
+        fitView({ duration: 800, padding: 0.15 });
       }, 100);
     };
 
