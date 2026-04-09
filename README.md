@@ -1,5 +1,5 @@
 Hi, I’m Vinay Chaudhary,  
-Full-Stack Engineer • Systems & Infrastructure Enthusiast
+Full-Stack Engineer & Designer 🎨 • Systems & Infrastructure Enthusiast
 
 I’m a software engineer working primarily on the backend system, with a strong interest in designing scalable systems, clean data models/schemas, and reliable infrastructure. I enjoy working with legacy systems and re-architecting them for clarity and scale.
 
