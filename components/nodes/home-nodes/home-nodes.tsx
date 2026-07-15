@@ -1,13 +1,38 @@
 "use client"
 
-import { Handle, NodeTypes, Position } from "@xyflow/react"
-import Image from "next/image"
+import { Handle, NodeTypes, Position, type Node, type NodeProps } from "@xyflow/react"
+import Image, { type StaticImageData } from "next/image"
 import pfp from '@/public/pfp.jpeg'
 import Link from "next/link"
 import { GitHubCalendar } from "react-github-calendar"
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa"
 import { useState } from "react"
 import { useDebug } from "./debug-context"
+
+type IntroductionNodeData = { label: string };
+type TimeNodeData = { period: string };
+type ExperienceNodeData = {
+  company: string;
+  role: string;
+  details: string[];
+  media: string | StaticImageData | null;
+};
+type ProjectNodeData = {
+  title: string;
+  tag: string;
+  media: StaticImageData;
+  link: string;
+  description: string;
+};
+type GithubNodeData = { username: string };
+
+type IntroductionFlowNode = Node<IntroductionNodeData, "introduction">;
+type TimeFlowNode = Node<TimeNodeData, "time">;
+type ExperienceFlowNode = Node<ExperienceNodeData, "experience">;
+type ProjectFlowNode = Node<ProjectNodeData, "project">;
+type SocialFlowNode = Node<Record<string, never>, "social">;
+type TwitterFlowNode = Node<Record<string, never>, "twitter">;
+type GithubFlowNode = Node<GithubNodeData, "github">;
 
 function CoordinateBadge({ x, y }: { x?: number, y?: number }) {
   const { showCoordinates } = useDebug();
@@ -19,7 +44,7 @@ function CoordinateBadge({ x, y }: { x?: number, y?: number }) {
   )
 }
 
-function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }: any) {
+function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }: NodeProps<IntroductionFlowNode>) {
   return (
     <div className="group relative">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
@@ -42,10 +67,10 @@ function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }: any) {
           {/* Left: text */}
           <div className="flex-1 flex flex-col justify-center p-8 gap-3">
             <h1 className="font-mono text-lg font-black text-black leading-snug">
-              I'm Vinay Chaudhary, Backend Engineer &amp; Systems Thinker.
+              I&apos;m Vinay Chaudhary, Backend Engineer &amp; Systems Thinker.
             </h1>
             <p className="font-mono text-sm text-gray-500 leading-relaxed">
-              I build scalable backends, obsess over clean data models, and re-architect legacy systems for clarity and scale. When I'm not shipping code, I'm collecting keycaps and reading about databases. Based in India.
+              I build scalable backends, obsess over clean data models, and re-architect legacy systems for clarity and scale. When I&apos;m not shipping code, I&apos;m collecting keycaps and reading about databases. Based in India.
             </p>
           </div>
 
@@ -68,7 +93,7 @@ function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }: any) {
   )
 }
 
-function TimeNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
+function TimeNode({ data, positionAbsoluteX, positionAbsoluteY }: NodeProps<TimeFlowNode>) {
   return (
     <div className="relative bg-white border-2 border-black px-3 py-2 font-mono text-xs font-bold text-black z-10 rounded-xl flex gap-2 justify-center items-center w-[180px] text-center">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
@@ -90,7 +115,7 @@ function TimeNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
   )
 }
 
-function ExperienceNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
+function ExperienceNode({ data, positionAbsoluteX, positionAbsoluteY }: NodeProps<ExperienceFlowNode>) {
   return (
     <div className="relative w-[600px] md:w-[600px] bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
@@ -122,7 +147,7 @@ function ExperienceNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
   )
 }
 
-function ProjectNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
+function ProjectNode({ data, positionAbsoluteX, positionAbsoluteY }: NodeProps<ProjectFlowNode>) {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
   
   return (
@@ -166,7 +191,7 @@ function ProjectNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
   )
 }
 
-function SocialNode({ positionAbsoluteX, positionAbsoluteY }: any) {
+function SocialNode({ positionAbsoluteX, positionAbsoluteY }: NodeProps<SocialFlowNode>) {
   return (
     <div className="relative group">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
@@ -194,7 +219,7 @@ function SocialNode({ positionAbsoluteX, positionAbsoluteY }: any) {
   )
 }
 
-function TwitterNode({ positionAbsoluteX, positionAbsoluteY }: any) {
+function TwitterNode({ positionAbsoluteX, positionAbsoluteY }: NodeProps<TwitterFlowNode>) {
   return (
     <div className="relative">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
@@ -215,7 +240,7 @@ function TwitterNode({ positionAbsoluteX, positionAbsoluteY }: any) {
   )
 }
 
-function GithubNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
+function GithubNode({ data, positionAbsoluteX, positionAbsoluteY }: NodeProps<GithubFlowNode>) {
   return (
     <div className="relative">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />

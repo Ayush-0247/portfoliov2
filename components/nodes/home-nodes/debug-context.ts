@@ -1,8 +1,13 @@
 import { createContext, useContext } from 'react';
 
-export const DebugContext = createContext({
+type DebugContextValue = {
+  showCoordinates: boolean;
+  setShowCoordinates: (showCoordinates: boolean) => void;
+};
+
+export const DebugContext = createContext<DebugContextValue>({
   showCoordinates: false,
-  setShowCoordinates: (show: boolean) => {}
+  setShowCoordinates: () => undefined,
 });
 
 export const useDebug = () => useContext(DebugContext);

@@ -10,6 +10,7 @@ import {
     Connection,
     type Edge,
     type Node,
+    type NodeMouseHandler,
     ReactFlowProvider,
     useReactFlow,
     NodeTypes,
@@ -20,7 +21,7 @@ import {
 import { useCallback, useEffect, useState, useContext } from "react"
 import '@xyflow/react/dist/style.css'; 
 import { whiteDotBg } from "@/static/graph-bg"
-import { desktopNodes, mobileNodes, desktopEdges, mobileEdges } from "@/components/nodes/home-nodes/home-nodes-config" 
+import { desktopNodes, desktopEdges } from "@/components/nodes/home-nodes/home-nodes-config"
 import { DebugContext } from '@/components/nodes/home-nodes/debug-context'
 import { saveNodeCoordinates } from "@/app/actions"
 import { FaGithub } from "react-icons/fa"
@@ -37,7 +38,7 @@ function Flow({ nodeTypes }: { nodeTypes: NodeTypes }) {
     setTimeout(() => fitView({ duration: 800, padding: 0.3 }), 100);
   }, [fitView]);
 
-  const onNodeClick = useCallback((event: any, node: Node) => {
+  const onNodeClick = useCallback<NodeMouseHandler>((_event, node) => {
     const x = node.position.x + (node.measured?.width ?? 0) / 2;
     const y = node.position.y + (node.measured?.height ?? 0) / 2;
     setCenter(x, y, { zoom: 1.2, duration: 800 });
@@ -93,8 +94,9 @@ function Flow({ nodeTypes }: { nodeTypes: NodeTypes }) {
       const positions = nodes.map(n => ({ id: n.id, x: n.position.x, y: n.position.y }));
       await saveNodeCoordinates(positions, 'desktop');
       alert('✅ Positions saved to source code!');
-    } catch (e: any) {
-      alert('Failed to save: ' + e.message);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'An unexpected error occurred.';
+      alert('Failed to save: ' + message);
     } finally {
       setIsSaving(false);
     }
@@ -108,8 +110,6 @@ function Flow({ nodeTypes }: { nodeTypes: NodeTypes }) {
     const y = node.position.y + (node.measured?.height ?? 200) / 2;
     setCenter(x, y, { zoom: 1.3, duration: 700 });
   }, [nodes, setCenter]);
-
-  const [navOpen, setNavOpen] = useState(false);
 
   const navSections = [
     {
@@ -177,7 +177,10 @@ function Flow({ nodeTypes }: { nodeTypes: NodeTypes }) {
 
         {/* ── Nav Widget — always visible ── */}
         <Panel position="bottom-right" className="mb-6 mr-4">
-          <div className="flex items-center gap-px bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+          <div
+            aria-label={navSections.map((section) => section.label).join(", ")}
+            className="flex items-center gap-px bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+          >
 
             {/* GitHub icon */}
             <button
