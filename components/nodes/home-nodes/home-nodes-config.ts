@@ -5,9 +5,11 @@ import fwl from "@/public/fwl.png";
 import uchs from "@/public/uchs.png";
 import vitrifyLogo from "@/public/vitrify.jpg";
 
+const bracketsLogo = "/brackets.svg";
+
 export const nodeData = {
   intro: { label: "Me" },
-  time1: { period: "2025/Dec - Now" },
+  time1: { period: "2024/Dec - 2025/Jun" },
   exp1: {
     company: "Flinque (TG3)",
     role: "Backend Engineer",
@@ -21,7 +23,7 @@ export const nodeData = {
     ],
     media: null,
   },
-  time2: { period: "2025/Apr - Now" },
+  time2: { period: "2025/Apr - 2025/Jun" },
   exp2: {
     company: "Vitrify Softwares",
     role: "Full Stack Engineer",
@@ -33,6 +35,17 @@ export const nodeData = {
       "Worked closely with doctors, turning raw feedback into practical features that improved the product in meaningful ways.",
   ],
     media: vitrifyLogo
+  },
+  time3: { period: "2025/Jun - Now" },
+  exp3: {
+    company: "Brackets",
+    role: "AI Engineer",
+    details: [
+      "Working on logistics platform features by processing third-party telematics data and implementing business logic for trip route visualization, stop detection, fuel events, and trip cost breakdowns",
+      "Implemented a payroll module that syncs with trips to automate payroll calculations",
+      "Designed analytics dashboards for mileage trends, ownership costs, and fleet performance metrics."
+    ],
+    media: bracketsLogo
   },
   proj1: {
     title: "Formwavelabs",
@@ -48,106 +61,178 @@ export const nodeData = {
     link: "https://usecustomhookspace.vercel.app",
     description: "A collection of ready-to-use React hooks and utilities to supercharge your development workflow."
   },
+  github: {
+    username: "vinayisactive"
+  }
 };
 
 export const desktopNodes: Node[] = [
   {
     id: "1",
     type: "introduction",
-    position: { x: -125, y: -50 },
+    position: { x: -1031, y: 324 },
     data: nodeData.intro,
+  },
+  {
+    id: "git",
+    type: "github",
+    position: { x: -1244, y: 8 },
+    data: nodeData.github,
+  },
+  {
+    id: "t3",
+    type: "time",
+    position: { x: 156, y: 444 },
+    data: nodeData.time3,
+  },
+  {
+    id: "e3",
+    type: "experience",
+    position: { x: -56, y: 11 },
+    data: nodeData.exp3,
   },
   {
     id: "t1",
     type: "time",
-    position: { x: 680, y: 200 },
+    position: { x: 636, y: 442 },
     data: nodeData.time1,
   },
   {
     id: "e1",
     type: "experience",
-    position: { x: 880, y: -29 }, 
+    position: { x: 425, y: 596 }, 
     data: nodeData.exp1,
   },
   {
     id: "t2",
     type: "time",
-    position: { x: 689, y: 686 },
+    position: { x: 1109, y: 442 },
     data: nodeData.time2,
   },
   {
     id: "e2",
     type: "experience",
-    position: { x: 880  , y: 500 },
+    position: { x: 898, y: -58 },
     data: nodeData.exp2,
   },
   {
     id: "4",
     type: "project",
-    position: { x: -200, y: 380 },
+    position: { x: -1109, y: 781 },
     data: nodeData.proj1,
-    zIndex: 1,
   },
   {
     id: "5",
     type: "project",
-    zIndex: 1,
-    position: { x: -30, y: 571, },
+    position: { x: -936, y: 946 },
     data: nodeData.proj2,
   },
+  {
+    id: "twitter",
+    type: "twitter",
+    position: { x: -585, y: 651 },
+    data: {},
+  }
 ];
 
 export const desktopEdges: Edge[] = [
   {
-    id: "e1-t1",
+    id: "intro-git",
     source: "1",
-    target: "t1",
-    sourceHandle: "experience",
-    type: "smoothstep",
+    target: "git",
+    sourceHandle: "github",
+    targetHandle: "bottom",
+    type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "5,5" },
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
-    id: "e-t1-e1",
+    id: "intro-t3",
+    source: "1",
+    target: "t3",
+    sourceHandle: "experience",
+    targetHandle: "left",
+    type: "smoothstep",
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  },
+  {
+    id: "t3-e3",
+    source: "t3",
+    target: "e3",
+    sourceHandle: "top",
+    targetHandle: "bottom",
+    type: "straight",
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  },
+  {
+    id: "t3-t1",
+    source: "t3",
+    target: "t1",
+    sourceHandle: "right",
+    targetHandle: "left",
+    type: "straight",
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  },
+  {
+    id: "t1-e1",
     source: "t1",
     target: "e1",
-    sourceHandle: "right",
-    type: "smoothstep",
+    sourceHandle: "bottom",
+    targetHandle: "top",
+    type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "5,5" },
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
-    id: "e-t1-t2",
+    id: "t1-t2",
     source: "t1",
     target: "t2",
-    sourceHandle: "bottom",
+    sourceHandle: "right",
+    targetHandle: "left",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
-    id: "e-t2-e2",
+    id: "t2-e2",
     source: "t2",
     target: "e2",
-    sourceHandle: "right",
+    sourceHandle: "top",
+    targetHandle: "bottom",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
-    id: "e1-4",
+    id: "intro-4",
     source: "1",
     target: "4",
     sourceHandle: "projects",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
-    id: "e1-5",
+    id: "intro-twitter",
+    source: "1",
+    target: "twitter",
+    sourceHandle: "projects",
+    type: "smoothstep",
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  },
+  {
+    id: "intro-5",
     source: "1",
     target: "5",
     sourceHandle: "projects",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
-  },
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  }
 ];
 
 export const mobileNodes: Node[] = [
@@ -166,7 +251,7 @@ export const mobileNodes: Node[] = [
   {
     id: "e1",
     type: "experience",
-    position: { x: -140, y: 421 },
+    position: { x: -50, y: -173 },
     data: nodeData.exp1,
   },
   {
@@ -182,15 +267,27 @@ export const mobileNodes: Node[] = [
     data: nodeData.exp2,
   },
   {
+    id: "t3",
+    type: "time",
+    position: { x: -333, y: 1718 },
+    data: nodeData.time3,
+  },
+  {
+    id: "e3",
+    type: "experience",
+    position: { x: -140, y: 1532 },
+    data: nodeData.exp3,
+  },
+  {
     id: "4",
     type: "project",
-    position: { x: -200, y: 1480 },
+    position: { x: -200, y: 2014 },
     data: nodeData.proj1,
   },
   {
     id: "5",
     type: "project",
-    position: { x: 160, y: 1480 },
+    position: { x: 160, y: 2014 },
     data: nodeData.proj2,
   },
 ];
@@ -226,6 +323,22 @@ export const mobileEdges: Edge[] = [
     id: "e-t2-e2",
     source: "t2",
     target: "e2",
+    sourceHandle: "right",
+    type: "straight",
+    style: { stroke: "#000", strokeWidth: 2 },
+  },
+  {
+    id: "e-t2-t3",
+    source: "t2",
+    target: "t3",
+    sourceHandle: "bottom",
+    type: "straight",
+    style: { stroke: "#000", strokeWidth: 2 },
+  },
+  {
+    id: "e-t3-e3",
+    source: "t3",
+    target: "e3",
     sourceHandle: "right",
     type: "straight",
     style: { stroke: "#000", strokeWidth: 2 },

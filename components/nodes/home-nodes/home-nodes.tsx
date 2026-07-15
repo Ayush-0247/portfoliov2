@@ -4,114 +4,103 @@ import { Handle, NodeTypes, Position } from "@xyflow/react"
 import Image from "next/image"
 import pfp from '@/public/pfp.jpeg'
 import Link from "next/link"
+import { GitHubCalendar } from "react-github-calendar"
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa"
 import { useState } from "react"
+import { useDebug } from "./debug-context"
 
-function IntroductionNode() {
+function CoordinateBadge({ x, y }: { x?: number, y?: number }) {
+  const { showCoordinates } = useDebug();
+  if (!showCoordinates || x === undefined || y === undefined) return null;
+  return (
+    <div className="absolute -top-3 -right-3 bg-black text-white text-[10px] font-mono px-2 py-1 z-[100] shadow-lg pointer-events-none rounded">
+      X: {Math.round(x)} | Y: {Math.round(y)}
+    </div>
+  )
+}
+
+function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }: any) {
   return (
     <div className="group relative">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3" />
-      
-      <div className="relative w-180 bg-white border-2 border-black p-0 overflow-hidden flex flex-col">
-        
-        <div className="h-8 border-b-2 border-black bg-stone-100 flex items-center px-4 justify-between select-none">
+
+      <div className="relative bg-white border-2 border-black overflow-hidden flex flex-col" style={{ width: '580px' }}>
+
+        {/* Title bar — 3 dots only, no text */}
+        <div className="h-8 border-b-2 border-black bg-stone-100 flex items-center px-4 select-none shrink-0">
           <div className="flex gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500 border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]" />
             <div className="w-3 h-3 rounded-full bg-amber-400 border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]" />
             <div className="w-3 h-3 rounded-full bg-green-500 border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]" />
           </div>
-          <div className="font-mono text-[10px] text-gray-500 tracking-widest uppercase">
-          </div>
         </div>
 
-        <div className="flex p-8 gap-8 items-start">
-          <div className="flex-1 flex flex-col gap-4">
-            <div className="inline-flex items-center gap-2 border border-black rounded-full px-3 py-1 bg-green-50 w-fit">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-green-800">Available for work</span>
-            </div>
+        {/* Content */}
+        <div className="flex">
 
-            <div>
-              <h1 className="text-6xl font-black text-black tracking-tighter leading-[0.9]">
-                VINAY CHAUDHARY
-              </h1>
-              <p className="font-mono text-gray-900 mt-1">
-                Full Stack Engineer + Designer 🎨
-              </p>
-            </div>
-
-            <p className="text-lg text-gray-800 font-medium leading-relaxed">
-              I structure software from the ground up, optimized for
-              <span className="mx-1 relative inline-block">
-                <span className="relative z-10 px-1 font-bold text-black underline">performance</span>
-              </span>
-              and
-              <span className="mx-1 relative inline-block">
-                <span className="relative z-10 px-1 font-bold text-black underline">evolution</span>
-              </span>.
+          {/* Left: text */}
+          <div className="flex-1 flex flex-col justify-center p-8 gap-3">
+            <h1 className="font-mono text-lg font-black text-black leading-snug">
+              I'm Vinay Chaudhary, Backend Engineer &amp; Systems Thinker.
+            </h1>
+            <p className="font-mono text-sm text-gray-500 leading-relaxed">
+              I build scalable backends, obsess over clean data models, and re-architect legacy systems for clarity and scale. When I'm not shipping code, I'm collecting keycaps and reading about databases. Based in India.
             </p>
           </div>
 
-          <div className="relative shrink-0">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/30 backdrop-blur-sm border-l border-r border-white/50 rotate-2 z-20 shadow-sm opacity-80" />
-            
-            <div className="relative w-40 h-40 bg-white border-2 border-black p-2 shadow-lg rotate-2 group-hover:rotate-1 transition-transform duration-300">
-              <div className="relative w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500">
-                <Image 
-                  src={pfp} 
-                  alt="Vinay" 
-                  fill 
-                  className="object-cover border border-black/10" 
-                />
-              </div>
+          {/* Right: photo 30% */}
+          <div className="border-l-2 border-black shrink-0" style={{ width: '30%' }}>
+            <div className="relative w-full h-full" style={{ minHeight: '200px' }}>
+              <Image src={pfp} alt="Vinay" fill className="object-cover object-center" />
             </div>
           </div>
+
         </div>
 
-      <Handle id="projects" type="source" position={Position.Bottom} className="bg-transparent! w-4! h-4! border-[3px]! border-white!"/>
-      <Handle id="projects-right" type="source" position={Position.Right} className="bg-transparent! w-4! h-4! border-[3px]! border-white!"/>
-      <Handle id="experience" type="source" position={Position.Right} className="bg-transparent! w-4! h-4! border-[3px]! border-white!"/>
-      <Handle id="experience-left" type="source" position={Position.Left} className="bg-transparent! w-4! h-4! border-[3px]! border-white!"/>
+        <Handle id="projects" type="source" position={Position.Bottom} className="!opacity-0 !w-4 !h-4"/>
+        <Handle id="projects-right" type="source" position={Position.Right} className="!opacity-0 !w-4 !h-4"/>
+        <Handle id="experience" type="source" position={Position.Right} className="!opacity-0 !w-4 !h-4"/>
+        <Handle id="experience-left" type="source" position={Position.Left} className="!opacity-0 !w-4 !h-4"/>
+        <Handle id="github" type="source" position={Position.Top} className="!opacity-0 !w-4 !h-4"/>
       </div>
     </div>
   )
 }
 
-function TimeNode({ data }: { data: { period: string } }) {
+function TimeNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
   return (
-    <div className="relative bg-white border-2 border-black px-3 py-2 font-mono text-xs font-bold text-black  z-10 rounded-xl flex gap-2 items-center">
+    <div className="relative bg-white border-2 border-black px-3 py-2 font-mono text-xs font-bold text-black z-10 rounded-xl flex gap-2 justify-center items-center w-[180px] text-center">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       {data.period}
 
       {
-        data.period === "2025/Dec - Now" && (
+        data.period.includes("Now") && (
             <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
         )
       }
-      
-      <Handle type="target" position={Position.Top} className="w-3 h-3 bg-transparent! border-none!" />
-      <Handle type="source" position={Position.Bottom} id="bottom" className="w-3 h-3 bg-transparent! border-none!" />
-      <Handle type="source" position={Position.Right} id="right" className="w-3 h-3 bg-transparent! border-none!" />
+      <Handle type="target" position={Position.Left} id="left" className="!opacity-0 !w-3 !h-3" />
+      <Handle type="source" position={Position.Right} id="right" className="!opacity-0 !w-3 !h-3" />
+      <Handle type="source" position={Position.Top} id="top" className="!opacity-0 !w-3 !h-3" />
+      <Handle type="source" position={Position.Bottom} id="bottom" className="!opacity-0 !w-3 !h-3" />
     </div>
   )
 }
 
-function ExperienceNode({ data }: { data: { role: string, company: string, details: string[], media: string } }) {
+function ExperienceNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
   return (
-    <div className="relative w-150 md:w-150 bg-white border-2 border-black p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
-      <div className="flex  justify-start items-center gap-4">
-        {
-          data.media && (
-           <Image src={data.media} alt={`${data.company} logo`} width={80} height={50} className="object-contain mb-4" />
-          )
-        }
+    <div className="relative w-[600px] md:w-[600px] bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
+      <div className="flex justify-start items-center gap-4">
+        {data.media && (
+           // eslint-disable-next-line @next/next/no-img-element
+           <img src={typeof data.media === 'string' ? data.media : data.media.src} alt={`${data.company} logo`} width={80} height={50} className="object-contain mb-4" />
+          )}
 
-        <div className="flex flex-col mb-4 border-b-2 border-black pb-3">
+        <div className="flex flex-col mb-4 border-b-2 border-black pb-3 w-full">
             <h3 className="text-2xl font-black text-black uppercase tracking-tight leading-none">{data.company}</h3>
             <p className="text-sm font-mono text-black font-bold mt-2">{data.role}</p>
          </div>
@@ -126,16 +115,19 @@ function ExperienceNode({ data }: { data: { role: string, company: string, detai
         ))}
       </ul> 
 
-      <Handle type="target" position={Position.Left} className="w-3 h-3  bg-transparent! border-none!" />
+      <Handle type="target" position={Position.Left} id="left" className="!opacity-0 !w-3 !h-3" />
+      <Handle type="target" position={Position.Top} id="top" className="!opacity-0 !w-3 !h-3" />
+      <Handle type="target" position={Position.Bottom} id="bottom" className="!opacity-0 !w-3 !h-3" />
     </div>
   )
 }
 
-function ProjectNode({ data }: { data: { title: string, tag: string, media: string, link: string, description: string } }) {
+function ProjectNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
   
   return (
     <div className="relative w-60 bg-white border-2 border-black p-3 pb-8  transition-transform shadow-lg group">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       <div className="relative w-full h-32 bg-neutral-100 border group-hover:border-2 border-black flex items-center justify-center overflow-hidden mb-3">
         <Image src={data.media} fill alt="" objectFit="cover" />
         <div className=" absolute top-0 left-0 bg-gray-400/05 w-full h-full group-hover:flex flex-col gap-2 group-hover: backdrop-blur-xs hidden justify-center items-center">
@@ -169,14 +161,15 @@ function ProjectNode({ data }: { data: { title: string, tag: string, media: stri
         </div>
       )}
 
-      <Handle type="target" position={Position.Top} className="bg-transparent! border-none!" />
+      <Handle type="target" position={Position.Top} className="!opacity-0 !border-none" />
     </div>
   )
 }
 
-function SocialNode() {
+function SocialNode({ positionAbsoluteX, positionAbsoluteY }: any) {
   return (
     <div className="relative group">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
        <div className="absolute inset-0 bg-black rounded-tr-2xl rounded-br-2xl translate-x-2 translate-y-2" />
        
        <div className="relative bg-white border-2 border-black p-4 flex gap-6 items-center rounded-tr-2xl rounded-br-2xl rounded-tl-none rounded-bl-none">
@@ -201,12 +194,68 @@ function SocialNode() {
   )
 }
 
+function TwitterNode({ positionAbsoluteX, positionAbsoluteY }: any) {
+  return (
+    <div className="relative">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
+      <a
+        href="https://x.com/vinayisactive"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 bg-black text-white border-2 border-black px-4 py-2 font-mono text-xs font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150"
+      >
+        {/* X logo */}
+        <svg width="13" height="13" viewBox="0 0 1200 1227" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.828Z"/>
+        </svg>
+        <span>@vinayisactive</span>
+      </a>
+      <Handle type="target" position={Position.Top} className="!opacity-0 !w-3 !h-3" />
+    </div>
+  )
+}
+
+function GithubNode({ data, positionAbsoluteX, positionAbsoluteY }: any) {
+  return (
+    <div className="relative">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
+
+      {/* Floating GitHub pill label above the card — clickable */}
+      <a
+        href="https://github.com/vinayisactive"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute -top-9 left-0 flex items-center gap-1.5 bg-black text-white border-2 border-black px-3 py-1 font-mono text-xs font-bold z-10 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150"
+      >
+        <FaGithub size={13} />
+        <span>GitHub</span>
+      </a>
+      {/* Connecting line from pill to card */}
+      <div className="absolute -top-[10px] left-[22px] w-0.5 h-[10px] bg-black" />
+
+      <div className="relative bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 w-fit">
+        <GitHubCalendar
+           username={data.username}
+           colorScheme="light"
+           blockMargin={4}
+           blockSize={14}
+           showTotalCount={false}
+           showColorLegend={false}
+        />
+        <Handle id="bottom" type="target" position={Position.Bottom} className="!opacity-0 !w-4 !h-4" />
+      </div>
+    </div>
+  )
+}
+
 const nodeTypes: NodeTypes = {
   introduction: IntroductionNode,
   time: TimeNode,
   experience: ExperienceNode,
   project: ProjectNode,
   social: SocialNode,
+  github: GithubNode,
+  twitter: TwitterNode,
 }
 
 export {
@@ -215,5 +264,6 @@ export {
     ExperienceNode, 
     ProjectNode,
     SocialNode,
+    GithubNode,
     nodeTypes
 }
