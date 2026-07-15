@@ -9,7 +9,7 @@ const bracketsLogo = "/brackets.svg";
 
 export const nodeData = {
   intro: { label: "Me" },
-  time1: { period: "2024/Dec - 2025/Jun" },
+  time1: { period: "2025/Dec - 2026/Jun" },
   exp1: {
     company: "Flinque (TG3)",
     role: "Backend Engineer",
@@ -23,9 +23,9 @@ export const nodeData = {
     ],
     media: null,
   },
-  time2: { period: "2025/Apr - 2025/Jun" },
+  time2: { period: "2025/Apr - 2026/Jun" },
   exp2: {
-    company: "Vitrify Softwares",
+    company: "Vitrify Softwares (TG3)",
     role: "Full Stack Engineer",
     details: [
       "Took ownership of the backend and rebuilt it from the ground up with a clean, modular architecture that actually scales.",
@@ -36,7 +36,7 @@ export const nodeData = {
   ],
     media: vitrifyLogo
   },
-  time3: { period: "2025/Jun - Now" },
+  time3: { period: "2026/Jun - Now" },
   exp3: {
     company: "Brackets",
     role: "AI Engineer",
