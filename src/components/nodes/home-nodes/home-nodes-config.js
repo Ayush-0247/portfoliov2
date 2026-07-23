@@ -5,6 +5,7 @@ const lifelinkr = "/lifelinkr.png";
 import chat from "/chatapp.png";
 import cvc from "/cvc.png";
 import code from "/code.png";
+import bank from "/bank.png";
 
 const bracketsLogo = "/brackets.svg";
 
@@ -94,7 +95,7 @@ export const nodeData = {
   proj4: {
     title: "Banking System Backend",
     tag: "Node.js • Express • MongoDB",
-    media: cvc,
+    media: bank,
     link: "https://github.com/Ayush-0247/...",
     description:
       "A secure banking backend implementing JWT authentication, account management, money transfers, transaction history, email notifications, blacklist-based logout, and a modular MVC architecture.",
