@@ -4,7 +4,7 @@ import { Handle, Position } from "@xyflow/react";
 const pfp = "/pfp.jpeg";
 import pfp2 from "/pfp2.jpg";
 import { GitHubCalendar } from "react-github-calendar";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 import { useState } from "react";
 import { useDebug } from "./debug-context";
 
@@ -77,6 +77,13 @@ function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }) {
                 src={pfp2}
                 alt="Vinay"
                 className="absolute inset-0 h-full  object-cover object-center"
+              />
+              <Handle
+                id="education-right"
+                type="source"
+                position={Position.Right}
+                className="!opacity-0 !w-4 !h-4"
+                style={{ top: "50%" }}
               />
             </div>
           </div>
@@ -314,6 +321,226 @@ function SocialNode({ positionAbsoluteX, positionAbsoluteY }) {
   );
 }
 
+function EducationNode({ data, positionAbsoluteX, positionAbsoluteY }) {
+  return (
+    <div className="relative w-[600px] bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
+      <div className="flex justify-start items-center gap-4">
+        {data.media && (
+          <img
+            src={typeof data.media === "string" ? data.media : data.media.src}
+            alt={`${data.institute} logo`}
+            width={80}
+            height={50}
+            className="object-contain mb-4"
+          />
+        )}
+
+        <div className="flex flex-col mb-4 border-b-2 border-black pb-3 w-full">
+          <h3 className="text-2xl font-black text-black uppercase tracking-tight leading-none">
+            {data.institute}
+          </h3>
+          <div className="flex justify-between items-center mt-2 flex-wrap gap-2">
+            <p className="text-sm font-mono text-black font-bold">
+              {data.degree}
+            </p>
+            <p className="text-xs font-mono text-stone-600 bg-stone-100 border border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              {data.duration} | {data.cgpa}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <ul className="space-y-3">
+        {data.details &&
+          data.details.map((detail, idx) => (
+            <li key={idx} className="flex items-start gap-3">
+              <div className="mt-1.5 w-2 h-2 bg-black shrink-0" />
+              <span className="text-black leading-snug">{detail}</span>
+            </li>
+          ))}
+      </ul>
+
+      <Handle
+        type="target"
+        position={Position.Left}
+        id="left"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="top"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="bottom"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Right}
+        id="right"
+        className="!opacity-0 !w-3 !h-3"
+      />
+    </div>
+  );
+}
+
+function TechStackNode({ data, positionAbsoluteX, positionAbsoluteY }) {
+  return (
+    <div className="relative w-[600px] bg-white dark:bg-stone-800 border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
+      
+      <div className="flex flex-col mb-4 border-b-2 border-black pb-3 w-full">
+        <h3 className="text-2xl font-black text-black uppercase tracking-tight leading-none">
+          {data.title || "Tech Stack"}
+        </h3>
+        <p className="text-sm font-mono text-stone-600 dark:text-stone-300 mt-2">
+          {data.subtitle || "Technologies I use"}
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        {data.categories && data.categories.map((cat, idx) => (
+          <div key={idx} className="flex flex-col gap-2">
+            <h4 className="font-mono text-xs font-black uppercase text-stone-500 tracking-wider">
+              {cat.name}
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {cat.skills.map((skill, sIdx) => (
+                <span 
+                  key={sIdx} 
+                  className="bg-white dark:bg-stone-900 border-2 border-black px-3 py-1 font-mono text-xs font-bold text-black dark:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all select-none"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="top"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Left}
+        id="left"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Bottom}
+        id="bottom"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="right"
+        className="!opacity-0 !w-3 !h-3"
+      />
+    </div>
+  );
+}
+
+function GithubVisitNode({ positionAbsoluteX, positionAbsoluteY }) {
+  return (
+    <div className="relative">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
+      <a
+        href="https://github.com/Ayush-0247"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 bg-black text-white border-2 border-black px-4 py-2 font-mono text-xs font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150"
+      >
+        <FaGithub size={16} />
+        <span>Visit GitHub</span>
+      </a>
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="top"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Left}
+        id="left"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Bottom}
+        id="bottom"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Right}
+        id="right"
+        className="!opacity-0 !w-3 !h-3"
+      />
+    </div>
+  );
+}
+
+function ResumeNode({ positionAbsoluteX, positionAbsoluteY }) {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/resume.pdf";
+    link.download = "Ayush_Raj_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <div className="relative">
+      <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
+      <button
+        onClick={handleDownload}
+        className="flex items-center gap-2 border-2 border-black px-4 py-2 font-mono text-xs font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150 cursor-pointer text-white"
+        style={{ backgroundColor: "black", color: "white" }}
+      >
+        <FaDownload size={13} className="text-white" />
+        <span>Download CV</span>
+      </button>
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="top"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Left}
+        id="left"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Bottom}
+        id="bottom"
+        className="!opacity-0 !w-3 !h-3"
+      />
+      <Handle
+        type="target"
+        position={Position.Right}
+        id="right"
+        className="!opacity-0 !w-3 !h-3"
+      />
+    </div>
+  );
+}
+
 function LinkedInNode({ positionAbsoluteX, positionAbsoluteY }) {
   return (
     <div className="relative">
@@ -369,6 +596,12 @@ function GithubNode({ data, positionAbsoluteX, positionAbsoluteY }) {
           position={Position.Bottom}
           className="!opacity-0 !w-4 !h-4"
         />
+        <Handle
+          id="left-source"
+          type="source"
+          position={Position.Left}
+          className="!opacity-0 !w-4 !h-4"
+        />
       </div>
     </div>
   );
@@ -381,9 +614,21 @@ const nodeTypes = {
   project: ProjectNode,
   social: SocialNode,
   github: GithubNode,
-  linkedin: LinkedInNode,
+  linkedin: LinkedInNode, 
+  education: EducationNode,
+  techstack: TechStackNode,
+  resume: ResumeNode,
+  gitvisit: GithubVisitNode,
 };
-
+// const nodeTypes = {
+//   introduction: IntroductionNode,
+//   experience: ExperienceNode,
+//   project: ProjectNode,
+//   github: GithubNode,
+//   linkedin: LinkedinNode,
+//   time: TimeNode,
+ 
+// };
 export {
   IntroductionNode,
   TimeNode,
