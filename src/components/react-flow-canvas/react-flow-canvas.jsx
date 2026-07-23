@@ -7,7 +7,6 @@ import {
   addEdge,
   ReactFlowProvider,
   useReactFlow,
-  Controls,
   Panel,
 } from "@xyflow/react";
 
@@ -178,10 +177,8 @@ function Flow({ nodeTypes }) {
       style={{ backgroundImage: whiteDotBg }}
       proOptions={{ hideAttribution: true }}
     >
-      <Controls className="bg-white! border-2! border-black! shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]! rounded-none! text-black!" />
-
       {/* ── Nav Widget — always visible ── */}
-      <Panel position="bottom-right" className="mb-6 mr-4">
+      <Panel position="top-right" className="mt-6 mr-4">
         <div
           aria-label={navSections.map((section) => section.label).join(", ")}
           className="flex items-center gap-px bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
