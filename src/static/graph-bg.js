@@ -18,7 +18,7 @@ const dotGridSvg = `
 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <pattern id="dot-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="0.5" fill="#000" />
+      <circle cx="2" cy="2" r="0.5" fill="#cbd5e1" />
     </pattern>
   </defs>
   <rect width="100%" height="100%" fill="#ffffff" />

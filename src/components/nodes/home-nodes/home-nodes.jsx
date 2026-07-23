@@ -12,7 +12,7 @@ function CoordinateBadge({ x, y }) {
   const { showCoordinates } = useDebug();
   if (!showCoordinates || x === undefined || y === undefined) return null;
   return (
-    <div className="absolute -top-3 -right-3 bg-black text-white text-[10px] font-mono px-2 py-1 z-[100] shadow-lg pointer-events-none rounded">
+    <div className="absolute -top-3 -right-3 bg-[#D4AF37] text-white text-[10px] font-mono px-2 py-1 z-[100] shadow-lg pointer-events-none rounded">
       X: {Math.round(x)} | Y: {Math.round(y)}
     </div>
   );
@@ -20,43 +20,43 @@ function CoordinateBadge({ x, y }) {
 
 function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }) {
   return (
-    <div className="group relative">
+    <div className="relative group">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
-      <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3" />
-
       <div
-        className="relative bg-white border-2 border-black overflow-hidden flex flex-col"
-        style={{ width: "580px" }}
+        className="relative overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl"
+        style={{
+          width: "580px",
+          background: "rgba(255, 255, 255, 0.65)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          borderRadius: "12px",
+          color: "#334155",
+        }}
       >
         {/* Title bar — 3 dots only, no text */}
-        <div className="h-8 border-b-2 border-black bg-stone-100 flex items-center px-4 select-none shrink-0">
+        <div className="h-8 border-b border-white/20 bg-white/20 flex items-center px-4 select-none shrink-0">
           <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500 border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]" />
-            <div className="w-3 h-3 rounded-full bg-amber-400 border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]" />
-            <div className="w-3 h-3 rounded-full bg-green-500 border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]" />
+            <div className="w-3 h-3 rounded-full bg-red-400/80" />
+            <div className="w-3 h-3 rounded-full bg-amber-300/80" />
+            <div className="w-3 h-3 rounded-full bg-green-400/80" />
           </div>
         </div>
 
         {/* Content */}
         <div className="flex">
           {/* Left: text */}
-          {/* <div className="flex-1 flex flex-col justify-center p-8 gap-3">
-            <h1 className="font-mono text-lg font-black text-black leading-snug">
-              I&apos;m Vinay Chaudhary, Backend Engineer &amp; Systems Thinker.
-            </h1>
-            <p className="font-mono text-sm text-gray-500 leading-relaxed">
-              I build scalable backends, obsess over clean data models, and re-architect legacy systems for clarity and scale. When I&apos;m not shipping code, I&apos;m collecting keycaps and reading about databases. Based in India.
-            </p>
-          </div> */}
-
           <div className="flex-1 flex flex-col justify-center p-8 gap-3">
-            <h1 className="font-mono text-lg font-black text-black leading-snug">
+            <h1 className="font-sans text-xl font-bold text-slate-800 leading-snug">
               Hi, I'm Ayush Raj.
               <br />
-              Full Stack Developer building scalable web applications.
+              <span className="text-xs uppercase tracking-wider font-mono text-[#D4AF37]">
+                Full Stack Developer
+              </span>
             </h1>
 
-            <p className="font-mono text-sm text-gray-500 leading-relaxed">
+            <p className="font-sans text-sm text-slate-600 leading-relaxed">
               I specialize in React, Node.js, Express, and MongoDB, crafting
               performant user interfaces and robust backend systems. I enjoy
               solving complex engineering problems, designing clean APIs, and
@@ -66,7 +66,7 @@ function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }) {
 
           {/* Right: photo 30% */}
           <div
-            className="border-l-2 border-black shrink-0"
+            className="border-l border-slate-200/50 shrink-0"
             style={{ width: "30%" }}
           >
             <div
@@ -75,8 +75,8 @@ function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }) {
             >
               <img
                 src={pfp2}
-                alt="Vinay"
-                className="absolute inset-0 h-full  object-cover object-center"
+                alt="Ayush"
+                className="absolute inset-0 w-full h-full object-cover object-center"
               />
               <Handle
                 id="education-right"
@@ -125,15 +125,27 @@ function IntroductionNode({ positionAbsoluteX, positionAbsoluteY }) {
 }
 
 function TimeNode({ data, positionAbsoluteX, positionAbsoluteY }) {
+  const isPresent = data.period.toLowerCase().includes("now") || data.period.toLowerCase().includes("present");
   return (
-    <div className="relative bg-white border-2 border-black px-3 py-2 font-mono text-xs font-bold text-black z-10 rounded-xl flex gap-2 justify-center items-center w-[180px] text-center">
+    <div
+      className="relative px-3 py-2 font-mono text-xs font-bold z-10 flex gap-2 justify-center items-center w-[180px] text-center"
+      style={{
+        background: "rgba(255, 255, 255, 0.65)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(255, 255, 255, 0.4)",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+        borderRadius: "12px",
+        color: "#334155",
+      }}
+    >
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       {data.period}
 
-      {data.period.includes("Now") && (
+      {isPresent && (
         <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4AF37]"></span>
         </span>
       )}
       <Handle
@@ -166,11 +178,21 @@ function TimeNode({ data, positionAbsoluteX, positionAbsoluteY }) {
 
 function ExperienceNode({ data, positionAbsoluteX, positionAbsoluteY }) {
   return (
-    <div className="relative w-[600px] md:w-[600px] bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+    <div
+      className="relative w-[600px] md:w-[600px] p-6 transition-all duration-200 hover:-translate-y-0.5"
+      style={{
+        background: "rgba(255, 255, 255, 0.65)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(255, 255, 255, 0.4)",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+        borderRadius: "12px",
+        color: "#334155",
+      }}
+    >
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       <div className="flex justify-start items-center gap-4">
         {data.media && (
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={typeof data.media === "string" ? data.media : data.media.src}
             alt={`${data.company} logo`}
@@ -180,11 +202,11 @@ function ExperienceNode({ data, positionAbsoluteX, positionAbsoluteY }) {
           />
         )}
 
-        <div className="flex flex-col mb-4 border-b-2 border-black pb-3 w-full">
-          <h3 className="text-2xl font-black text-black uppercase tracking-tight leading-none">
+        <div className="flex flex-col mb-4 border-b border-slate-200/50 pb-3 w-full">
+          <h3 className="text-2xl font-black text-slate-800 uppercase tracking-tight leading-none">
             {data.company}
           </h3>
-          <p className="text-sm font-mono text-black font-bold mt-2">
+          <p className="text-sm font-mono text-slate-500 font-bold mt-2">
             {data.role}
           </p>
         </div>
@@ -192,9 +214,9 @@ function ExperienceNode({ data, positionAbsoluteX, positionAbsoluteY }) {
 
       <ul className="space-y-3">
         {data.details.map((detail, idx) => (
-          <li key={idx} className="flex items-start gap-3">
-            <div className="mt-1.5 w-2 h-2 bg-black shrink-0" />
-            <span className=" text-black leading-snug">{detail}</span>
+          <li key={idx} className="flex items-start gap-3 text-slate-600">
+            <div className="mt-1.5 w-2 h-2 shrink-0 rounded-full" style={{ backgroundColor: "#D4AF37" }} />
+            <span className="leading-snug text-sm">{detail}</span>
           </li>
         ))}
       </ul>
@@ -225,47 +247,68 @@ function ProjectNode({ data, positionAbsoluteX, positionAbsoluteY }) {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
   return (
-    <div className="relative w-60 bg-white border-2 border-black p-3 pb-8  transition-transform shadow-lg group">
+    <div
+      className="relative w-60 p-3 pb-8 transition-all duration-200 hover:-translate-y-0.5 group"
+      style={{
+        background: "rgba(255, 255, 255, 0.65)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(255, 255, 255, 0.4)",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+        borderRadius: "12px",
+        color: "#334155",
+      }}
+    >
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
-      <div className="relative w-full h-32 bg-neutral-100 border group-hover:border-2 border-black flex items-center justify-center overflow-hidden mb-3">
+      <div className="relative w-full h-32 bg-slate-100 border border-slate-200/50 flex items-center justify-center overflow-hidden mb-3 rounded-lg">
         <img
           src={data.media}
-          alt=""
+          alt={data.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className=" absolute top-0 left-0 bg-gray-400/05 w-full h-full group-hover:flex flex-col gap-2 group-hover: backdrop-blur-xs hidden justify-center items-center">
+        <div className="absolute inset-0 bg-black/40 w-full h-full group-hover:flex flex-col gap-2 backdrop-blur-xs hidden justify-center items-center p-2">
           <a
             href={data.link}
             target="_blank"
-            className="text-sm font-mono bg-white px-2 py-1 border border-black cursor-pointer"
+            rel="noopener noreferrer"
+            className="w-full text-center text-xs font-mono bg-white/90 hover:bg-white text-slate-800 hover:text-[#D4AF37] px-2 py-1 rounded transition-all cursor-pointer"
           >
             Live Preview
           </a>
 
           <button
-            onClick={() => setIsDescriptionVisible(!isDescriptionVisible)}
-            className="text-sm font-mono bg-white px-2 py-1 border border-black cursor-pointer"
+            onClick={() => setIsDescriptionVisible(true)}
+            className="w-full text-center text-xs font-mono bg-white/90 hover:bg-white text-slate-800 hover:text-[#D4AF37] px-2 py-1 rounded transition-all cursor-pointer"
           >
-            Show Description
+            Description
           </button>
         </div>
       </div>
-      <h4 className="font-mono text-lg leading-none text-black">
+      <h4 className="font-sans text-sm font-bold leading-tight text-slate-800 mb-1.5">
         {data.title}
       </h4>
-      <span className="text-xs font-mono text-white bg-blue-400 px-1">
+      <span className="text-[10px] font-mono text-white px-2 py-0.5 rounded" style={{ backgroundColor: "#D4AF37" }}>
         {data.tag}
       </span>
 
       {isDescriptionVisible && (
-        <div className="absolute top-0 left-0 bg-white w-full h-full p-4 flex flex-col justify-between z-20">
-          <div>{data.description}</div>
+        <div
+          className="absolute inset-0 p-4 flex flex-col justify-between z-20"
+          style={{
+            background: "rgba(255, 255, 255, 0.96)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            borderRadius: "12px",
+            color: "#334155",
+          }}
+        >
+          <div className="text-xs font-sans leading-relaxed overflow-y-auto">{data.description}</div>
 
           <button
             onClick={() => setIsDescriptionVisible(false)}
-            className="text-sm font-mono bg-white px-2 py-1 border border-black cursor-pointer mt-2"
+            className="text-xs font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-[#D4AF37] px-2 py-1 border border-slate-200 rounded mt-2 cursor-pointer transition-all self-start"
           >
-            Hide Description
+            Close
           </button>
         </div>
       )}
@@ -281,18 +324,25 @@ function ProjectNode({ data, positionAbsoluteX, positionAbsoluteY }) {
 
 function SocialNode({ positionAbsoluteX, positionAbsoluteY }) {
   return (
-    <div className="relative group">
+    <div className="relative">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
-      <div className="absolute inset-0 bg-black rounded-tr-2xl rounded-br-2xl translate-x-2 translate-y-2" />
 
-      <div className="relative bg-white border-2 border-black p-4 flex gap-6 items-center rounded-tr-2xl rounded-br-2xl rounded-tl-none rounded-bl-none">
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-black" />
-
+      <div
+        className="relative p-4 flex gap-6 items-center transition-all duration-200 hover:shadow-md"
+        style={{
+          background: "rgba(255, 255, 255, 0.65)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          borderRadius: "12px",
+        }}
+      >
         <a
           href="https://github.com/Ayush-0247"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black hover:text-gray-600 hover:scale-110 transition-transform"
+          className="text-slate-700 hover:text-[#D4AF37] hover:scale-110 transition-all"
         >
           <FaGithub size={24} />
         </a>
@@ -300,13 +350,13 @@ function SocialNode({ positionAbsoluteX, positionAbsoluteY }) {
           href="https://linkedin.com/in/ayushraj2407"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-700 hover:text-blue-800 hover:scale-110 transition-transform"
+          className="text-slate-700 hover:text-[#D4AF37] hover:scale-110 transition-all"
         >
           <FaLinkedin size={24} />
         </a>
         <a
           href="mailto:email@example.com"
-          className="text-red-500 hover:text-red-600 hover:scale-110 transition-transform"
+          className="text-slate-700 hover:text-[#D4AF37] hover:scale-110 transition-all"
         >
           <FaEnvelope size={24} />
         </a>
@@ -314,7 +364,7 @@ function SocialNode({ positionAbsoluteX, positionAbsoluteY }) {
         <Handle
           type="target"
           position={Position.Top}
-          className="bg-black! w-3! h-3! border-none!"
+          className="!opacity-0 !w-3 !h-3"
         />
       </div>
     </div>
@@ -323,7 +373,18 @@ function SocialNode({ positionAbsoluteX, positionAbsoluteY }) {
 
 function EducationNode({ data, positionAbsoluteX, positionAbsoluteY }) {
   return (
-    <div className="relative w-[600px] bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+    <div
+      className="relative w-[600px] p-6 transition-all duration-200 hover:-translate-y-0.5"
+      style={{
+        background: "rgba(255, 255, 255, 0.65)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(255, 255, 255, 0.4)",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+        borderRadius: "12px",
+        color: "#334155",
+      }}
+    >
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       <div className="flex justify-start items-center gap-4">
         {data.media && (
@@ -336,15 +397,15 @@ function EducationNode({ data, positionAbsoluteX, positionAbsoluteY }) {
           />
         )}
 
-        <div className="flex flex-col mb-4 border-b-2 border-black pb-3 w-full">
-          <h3 className="text-2xl font-black text-black uppercase tracking-tight leading-none">
+        <div className="flex flex-col mb-4 border-b border-slate-200/50 pb-3 w-full">
+          <h3 className="text-2xl font-black text-slate-800 uppercase tracking-tight leading-none">
             {data.institute}
           </h3>
           <div className="flex justify-between items-center mt-2 flex-wrap gap-2">
-            <p className="text-sm font-mono text-black font-bold">
+            <p className="text-sm font-mono text-slate-700 font-bold">
               {data.degree}
             </p>
-            <p className="text-xs font-mono text-stone-600 bg-stone-100 border border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            <p className="text-[10px] font-mono text-slate-600 bg-white/50 border border-slate-200/50 px-2 py-0.5 rounded shadow-sm">
               {data.duration} | {data.cgpa}
             </p>
           </div>
@@ -354,9 +415,9 @@ function EducationNode({ data, positionAbsoluteX, positionAbsoluteY }) {
       <ul className="space-y-3">
         {data.details &&
           data.details.map((detail, idx) => (
-            <li key={idx} className="flex items-start gap-3">
-              <div className="mt-1.5 w-2 h-2 bg-black shrink-0" />
-              <span className="text-black leading-snug">{detail}</span>
+            <li key={idx} className="flex items-start gap-3 text-slate-600">
+              <div className="mt-1.5 w-2 h-2 shrink-0 rounded-full" style={{ backgroundColor: "#D4AF37" }} />
+              <span className="leading-snug text-sm">{detail}</span>
             </li>
           ))}
       </ul>
@@ -391,14 +452,25 @@ function EducationNode({ data, positionAbsoluteX, positionAbsoluteY }) {
 
 function TechStackNode({ data, positionAbsoluteX, positionAbsoluteY }) {
   return (
-    <div className="relative w-[600px] bg-white dark:bg-stone-800 border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+    <div
+      className="relative w-[600px] p-6 transition-all duration-200 hover:-translate-y-0.5"
+      style={{
+        background: "rgba(255, 255, 255, 0.65)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(255, 255, 255, 0.4)",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+        borderRadius: "12px",
+        color: "#334155",
+      }}
+    >
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       
-      <div className="flex flex-col mb-4 border-b-2 border-black pb-3 w-full">
-        <h3 className="text-2xl font-black text-black uppercase tracking-tight leading-none">
+      <div className="flex flex-col mb-4 border-b border-slate-200/50 pb-3 w-full">
+        <h3 className="text-2xl font-black text-slate-800 uppercase tracking-tight leading-none">
           {data.title || "Tech Stack"}
         </h3>
-        <p className="text-sm font-mono text-stone-600 dark:text-stone-300 mt-2">
+        <p className="text-sm font-mono text-slate-500 mt-2">
           {data.subtitle || "Technologies I use"}
         </p>
       </div>
@@ -406,14 +478,14 @@ function TechStackNode({ data, positionAbsoluteX, positionAbsoluteY }) {
       <div className="space-y-4">
         {data.categories && data.categories.map((cat, idx) => (
           <div key={idx} className="flex flex-col gap-2">
-            <h4 className="font-mono text-xs font-black uppercase text-stone-500 tracking-wider">
+            <h4 className="font-mono text-xs font-black uppercase text-slate-400 tracking-wider">
               {cat.name}
             </h4>
             <div className="flex flex-wrap gap-2">
               {cat.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx} 
-                  className="bg-white dark:bg-stone-900 border-2 border-black px-3 py-1 font-mono text-xs font-bold text-black dark:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all select-none"
+                  className="bg-white/40 border border-slate-200/50 px-3 py-1 font-mono text-xs font-medium text-slate-700 rounded-lg hover:border-[#D4AF37]/50 hover:text-[#D4AF37] transition-all select-none"
                 >
                   {skill}
                 </span>
@@ -459,9 +531,20 @@ function GithubVisitNode({ positionAbsoluteX, positionAbsoluteY }) {
         href="https://github.com/Ayush-0247"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 bg-black text-white border-2 border-black px-4 py-2 font-mono text-xs font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150"
+        className="flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold transition-all duration-150 hover:-translate-y-0.5"
+        style={{
+          background: "rgba(255, 255, 255, 0.65)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          borderRadius: "12px",
+          color: "#334155",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}
       >
-        <FaGithub size={16} />
+        <FaGithub size={16} style={{ color: 'inherit' }} />
         <span>Visit GitHub</span>
       </a>
       <Handle
@@ -507,10 +590,20 @@ function ResumeNode({ positionAbsoluteX, positionAbsoluteY }) {
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       <button
         onClick={handleDownload}
-        className="flex items-center gap-2 border-2 border-black px-4 py-2 font-mono text-xs font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150 cursor-pointer text-white"
-        style={{ backgroundColor: "black", color: "white" }}
+        className="flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold transition-all duration-150 cursor-pointer hover:-translate-y-0.5"
+        style={{
+          background: "rgba(255, 255, 255, 0.65)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          borderRadius: "12px",
+          color: "#334155",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}
       >
-        <FaDownload size={13} className="text-white" />
+        <FaDownload size={13} style={{ color: 'inherit' }} />
         <span>Download CV</span>
       </button>
       <Handle
@@ -549,9 +642,20 @@ function LinkedInNode({ positionAbsoluteX, positionAbsoluteY }) {
         href="https://linkedin.com/in/ayushraj2407"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 bg-black text-white border-2 border-black px-4 py-2 font-mono text-xs font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150"
+        className="flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold transition-all duration-150 hover:-translate-y-0.5"
+        style={{
+          background: "rgba(255, 255, 255, 0.65)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          borderRadius: "12px",
+          color: "#334155",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}
       >
-        <FaLinkedin size={16} />
+        <FaLinkedin size={16} style={{ color: 'inherit' }} />
         <span>ayushraj2407</span>
       </a>
       <Handle
@@ -573,15 +677,37 @@ function GithubNode({ data, positionAbsoluteX, positionAbsoluteY }) {
         href="https://github.com/Ayush-0247"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute -top-9 left-0 flex items-center gap-1.5 bg-black text-white border-2 border-black px-3 py-1 font-mono text-xs font-bold z-10 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-150"
+        className="absolute -top-9 left-0 flex items-center gap-1.5 px-3 py-1 font-mono text-xs font-bold z-10 hover:-translate-y-0.5 transition-all duration-150"
+        style={{
+          background: "rgba(255, 255, 255, 0.65)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          borderRadius: "12px",
+          color: "#334155",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}
       >
-        <FaGithub size={13} />
+        <FaGithub size={13} style={{ color: 'inherit' }} />
         <span>GitHub</span>
       </a>
       {/* Connecting line from pill to card */}
-      <div className="absolute -top-[10px] left-[22px] w-0.5 h-[10px] bg-black" />
+      <div className="absolute -top-[10px] left-[22px] w-0.5 h-[10px]" style={{ backgroundColor: "#D4AF37" }} />
 
-      <div className="relative bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 w-fit">
+      <div
+        className="relative p-6 transition-all duration-200 w-fit hover:-translate-y-0.5"
+        style={{
+          background: "rgba(255, 255, 255, 0.65)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          borderRadius: "12px",
+          color: "#334155",
+        }}
+      >
         <GitHubCalendar
           username={data.username}
           colorScheme="light"
@@ -620,15 +746,7 @@ const nodeTypes = {
   resume: ResumeNode,
   gitvisit: GithubVisitNode,
 };
-// const nodeTypes = {
-//   introduction: IntroductionNode,
-//   experience: ExperienceNode,
-//   project: ProjectNode,
-//   github: GithubNode,
-//   linkedin: LinkedinNode,
-//   time: TimeNode,
- 
-// };
+
 export {
   IntroductionNode,
   TimeNode,

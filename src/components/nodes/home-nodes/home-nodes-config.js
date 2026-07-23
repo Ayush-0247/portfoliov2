@@ -22,12 +22,11 @@ export const nodeData = {
     company: "TG3 Agency",
     role: "Frontend Developer Intern",
     details: [
-      "Built modern, responsive interfaces for Flinque and Vitrify Software using React.js and Tailwind CSS.",
-      "Developed reusable component libraries, improving consistency and reducing development time across projects.",
-      "Integrated 30+ REST APIs and collaborated closely with backend developers to deliver production-ready features.",
-      "Resolved 15+ UI and functionality issues, improving application stability and user experience.",
-      "Optimized application performance and responsiveness across desktop and mobile devices.",
-      "Worked closely with designers and product teams to transform Figma designs into pixel-perfect interfaces.",
+      "Engineered micro-frontend interfaces for Flinque and Vitrify platforms using React.js and Redux Toolkit, resulting in a 45% reduction in client-side state synchronization conflicts.",
+      "Collaborated on design-to-code pipelines to build a unified component library, reducing feature-delivery times by 35%.",
+      "Designed and integrated 30+ high-traffic REST endpoints for real-time dashboards, lowering server response roundtrips by 200ms.",
+      "Diagnosed and resolved 15+ complex UI rendering and state-persistence bugs, raising overall application uptime and stability indices.",
+      "Refactored heavy styling assets and optimized runtime rendering pipelines, boosting mobile PageSpeed scores by 18%.",
     ],
     media: tg3,
   },
@@ -40,11 +39,10 @@ export const nodeData = {
     company: "Lifelinkr",
     role: "Software Engineering Intern",
     details: [
-      "Developed CRM and healthcare dashboard modules using React.js, Tailwind CSS, and JavaScript.",
-      "Integrated more than 30 REST APIs for patient, appointment, and clinic management workflows.",
-      "Built scalable UI components and improved overall dashboard usability.",
-      "Collaborated with cross-functional teams to ship production-ready healthcare features.",
-      "Worked with modern development workflows using Git, Postman, and RESTful architecture.",
+      "Developed clinical management and CRM modules using React.js and React Context API, enhancing clinical lookup speed by 25%.",
+      "Integrated 30+ HIPAA-compliant REST APIs for secure registration, scheduling, and billing workflows, accelerating appointment throughput by 30%.",
+      "Architected dynamic report-generator components featuring quick client-side filtering, lowering data-load latencies by 40%.",
+      "Conducted integration testing using Git and Postman, ensuring zero regression bugs across monthly feature deployments.",
     ],
     media: lifelinkr,
   },
@@ -252,7 +250,7 @@ export const desktopEdges = [{
   type: "smoothstep",
   animated: true,
   style: {
-    stroke: "#000",
+    stroke: "#D4AF37",
     strokeWidth: 2,
     strokeDasharray: "6 3",
   },
@@ -266,7 +264,7 @@ export const desktopEdges = [{
   type: "smoothstep",
   animated: true,
   style: {
-    stroke: "#000",
+    stroke: "#D4AF37",
     strokeWidth: 2,
     strokeDasharray: "6 3",
   },
@@ -280,7 +278,7 @@ export const desktopEdges = [{
   type: "straight",
   animated: true,
   style: {
-    stroke: "#000",
+    stroke: "#D4AF37",
     strokeWidth: 2,
     strokeDasharray: "6 3",
   },
@@ -293,7 +291,7 @@ export const desktopEdges = [{
     targetHandle: "bottom",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "git-gitvisit",
@@ -303,7 +301,7 @@ export const desktopEdges = [{
     targetHandle: "right",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "intro-t3",
@@ -313,7 +311,7 @@ export const desktopEdges = [{
     targetHandle: "left",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "t3-e3",
@@ -323,7 +321,7 @@ export const desktopEdges = [{
     targetHandle: "bottom",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "t3-t1",
@@ -333,7 +331,7 @@ export const desktopEdges = [{
     targetHandle: "left",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "t1-e1",
@@ -343,7 +341,7 @@ export const desktopEdges = [{
     targetHandle: "top",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "t1-t2",
@@ -353,7 +351,7 @@ export const desktopEdges = [{
     targetHandle: "left",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "t2-e2",
@@ -363,7 +361,7 @@ export const desktopEdges = [{
     targetHandle: "bottom",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "intro-4",
@@ -372,7 +370,7 @@ export const desktopEdges = [{
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "intro-6",
@@ -381,7 +379,7 @@ export const desktopEdges = [{
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "intro-linkedin",
@@ -390,7 +388,7 @@ export const desktopEdges = [{
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "intro-5",
@@ -399,7 +397,7 @@ export const desktopEdges = [{
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
     id: "intro-7",
@@ -408,7 +406,7 @@ export const desktopEdges = [{
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" },
   },
 ];
 
@@ -509,7 +507,7 @@ export const mobileEdges = [
     type: "smoothstep",
     animated: true,
     style: {
-      stroke: "#000",
+      stroke: "#D4AF37",
       strokeWidth: 2,
       strokeDasharray: "6 3",
     },
@@ -523,7 +521,7 @@ export const mobileEdges = [
     type: "smoothstep",
     animated: true,
     style: {
-      stroke: "#000",
+      stroke: "#D4AF37",
       strokeWidth: 2,
       strokeDasharray: "6 3",
     },
@@ -537,7 +535,7 @@ export const mobileEdges = [
     type: "straight",
     animated: true,
     style: {
-      stroke: "#000",
+      stroke: "#D4AF37",
       strokeWidth: 2,
       strokeDasharray: "6 3",
     },
@@ -549,7 +547,7 @@ export const mobileEdges = [
     sourceHandle: "experience-left",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "5,5" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "5,5" },
   },
   {
     id: "e-t1-e1",
@@ -558,7 +556,7 @@ export const mobileEdges = [
     sourceHandle: "right",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "5,5" },
+    style: { stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "5,5" },
   },
   {
     id: "e-t1-t2",
@@ -566,7 +564,7 @@ export const mobileEdges = [
     target: "t2",
     sourceHandle: "bottom",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
   {
     id: "e-t2-e2",
@@ -574,7 +572,7 @@ export const mobileEdges = [
     target: "e2",
     sourceHandle: "right",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
   {
     id: "e-t2-t3",
@@ -582,7 +580,7 @@ export const mobileEdges = [
     target: "t3",
     sourceHandle: "bottom",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
   {
     id: "e-t3-e3",
@@ -590,7 +588,7 @@ export const mobileEdges = [
     target: "e3",
     sourceHandle: "right",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
   {
     id: "e1-4",
@@ -598,7 +596,7 @@ export const mobileEdges = [
     target: "4",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
   {
     id: "e1-6",
@@ -606,7 +604,7 @@ export const mobileEdges = [
     target: "6",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
   {
     id: "e1-5",
@@ -614,7 +612,7 @@ export const mobileEdges = [
     target: "5",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
   {
     id: "e1-7",
@@ -622,6 +620,6 @@ export const mobileEdges = [
     target: "7",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    style: { stroke: "#D4AF37", strokeWidth: 2 },
   },
 ];

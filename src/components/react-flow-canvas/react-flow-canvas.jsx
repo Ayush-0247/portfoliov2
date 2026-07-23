@@ -150,7 +150,7 @@ function Flow({ nodeTypes }) {
     (params) =>
       setEdges((edgesSnapshot) =>
         addEdge(
-          { ...params, animated: true, style: { strokeWidth: 2 } },
+          { ...params, animated: true, style: { strokeWidth: 2, stroke: "#D4AF37", strokeDasharray: "6 3" } },
           edgesSnapshot,
         ),
       ),
@@ -174,20 +174,29 @@ function Flow({ nodeTypes }) {
         padding: 0.3,
         duration: 800,
       }}
+      connectionLineStyle={{ stroke: "#D4AF37", strokeWidth: 2, strokeDasharray: "6 3" }}
       style={{ backgroundImage: whiteDotBg }}
       proOptions={{ hideAttribution: true }}
     >
-      {/* ── Nav Widget — always visible ── */}
-      <Panel position="top-right" className="mt-6 mr-4">
+      {/* ── Nav Widget ── */}
+      <Panel position="top-left" className="mt-6 ml-6">
         <div
           aria-label={navSections.map((section) => section.label).join(", ")}
-          className="flex items-center gap-px bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+          className="flex items-center gap-px overflow-hidden"
+          style={{
+            background: "rgba(255, 255, 255, 0.65)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(255, 255, 255, 0.4)",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+            borderRadius: "12px",
+          }}
         >
           {/* GitHub icon */}
           <button
             onClick={() => focusNode("git")}
             title="GitHub"
-            className="flex items-center justify-center w-9 h-9 text-black hover:bg-black hover:text-white transition-colors duration-150"
+            className="flex items-center justify-center w-9 h-9 text-slate-700 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors duration-150 cursor-pointer"
           >
             <FaGithub size={16} />
           </button>
@@ -196,7 +205,7 @@ function Flow({ nodeTypes }) {
           <button
             onClick={() => focusNode("linkedin")}
             title="LinkedIn"
-            className="flex items-center justify-center w-9 h-9 border-l border-stone-200 text-black hover:bg-black hover:text-white transition-colors duration-150"
+            className="flex items-center justify-center w-9 h-9 border-l border-white/20 text-slate-700 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors duration-150 cursor-pointer"
           >
             <FaLinkedin size={16} />
           </button>
@@ -205,7 +214,7 @@ function Flow({ nodeTypes }) {
           <button
             onClick={() => focusNode("e3")}
             title="Experience"
-            className="flex items-center justify-center h-9 px-3 border-l-2 border-black font-mono text-[10px] font-bold text-black hover:bg-black hover:text-white transition-colors duration-150 tracking-widest uppercase"
+            className="flex items-center justify-center h-9 px-3 border-l border-white/20 font-mono text-[10px] font-bold text-slate-700 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors duration-150 tracking-widest uppercase cursor-pointer"
           >
             Exp
           </button>
@@ -216,15 +225,33 @@ function Flow({ nodeTypes }) {
         <Panel position="bottom-left" className="mb-4 ml-20 flex gap-2">
           <button
             onClick={onPaneClick}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-black font-mono text-xs font-black text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] transition-all"
+            className="flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold transition-all cursor-pointer"
+            style={{
+              background: "rgba(255, 255, 255, 0.65)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(255, 255, 255, 0.4)",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+              borderRadius: "12px",
+              color: "#334155",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}
           >
             Reset
           </button>
           <button
             onClick={() => setShowCoordinates(!showCoordinates)}
-            className={`flex items-center gap-2 px-4 py-2 border-2 border-black font-mono text-xs font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all ${
-              showCoordinates ? "bg-black text-white" : "bg-white text-black"
-            }`}
+            className="flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold transition-all cursor-pointer"
+            style={{
+              background: showCoordinates ? "rgba(212, 175, 55, 0.2)" : "rgba(255, 255, 255, 0.65)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: showCoordinates ? "1px solid #D4AF37" : "1px solid rgba(255, 255, 255, 0.4)",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+              borderRadius: "12px",
+              color: showCoordinates ? "#D4AF37" : "#334155",
+            }}
           >
             {showCoordinates ? "Hide XY" : "Show XY"}
           </button>
@@ -232,18 +259,38 @@ function Flow({ nodeTypes }) {
             <>
               <button
                 onClick={onStraightenLines}
-                className="flex items-center gap-2 px-6 py-3 bg-indigo-600 border-2 border-black font-mono text-sm font-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-1 active:translate-y-1 active:shadow-none"
+                className="flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold transition-all cursor-pointer"
+                style={{
+                  background: "rgba(255, 255, 255, 0.65)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255, 255, 255, 0.4)",
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+                  borderRadius: "12px",
+                  color: "#334155",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}
               >
-                Snap & Straighten Lines
+                Snap Lines
               </button>
               <button
                 onClick={onSavePositions}
                 disabled={isSaving}
-                className="flex items-center gap-2 px-6 py-3 bg-red-600 border-2 border-black font-mono text-sm font-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-1 active:translate-y-1 active:shadow-none disabled:opacity-50"
+                className="flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold transition-all cursor-pointer disabled:opacity-50"
+                style={{
+                  background: "rgba(255, 255, 255, 0.65)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255, 255, 255, 0.4)",
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+                  borderRadius: "12px",
+                  color: "#334155",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}
               >
-                {isSaving
-                  ? "Saving to Code..."
-                  : "Save Exact Positions to Code"}
+                {isSaving ? "Saving..." : "Save Positions"}
               </button>
             </>
           )}
