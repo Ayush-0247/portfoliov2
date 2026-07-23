@@ -521,7 +521,7 @@ function ResumeNode({ positionAbsoluteX, positionAbsoluteY }) {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = "/resume.pdf";
-    link.download = "Ayush_Raj_Resume.pdf";
+    link.download = "Ayush_raj_cv.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
