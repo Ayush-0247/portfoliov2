@@ -84,15 +84,15 @@ export const nodeData = {
     categories: [
       {
         name: "Frontend",
-        skills: ["React", "HTML5", "CSS3", "TailwindCSS", "JavaScript", "TypeScript", "Redux"]
+        skills: ["React", "HTML5", "CSS3", "TailwindCSS", "JavaScript"]
       },
       {
         name: "Backend & Databases",
-        skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs", "Socket.IO", "Mongoose"]
+        skills: ["Node.js", "Express.js", "MongoDB", "MYSQL",  "PostgreSQL", "REST APIs", "Socket.IO", "Mongoose"]
       },
       {
         name: "Tools & DevOps",
-        skills: ["Git", "GitHub", "Docker", "AWS", "Postman", "Vercel"]
+        skills: ["Git", "GitHub", "Docker", "AWS", "Postman", "Vercel" , "Render", "Netlify"]
       }
     ]
   },
