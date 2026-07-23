@@ -1,13 +1,10 @@
 "use client";
 
-const fwl = "/fwl.png";
-const uchs = "/uchs.png";
-const vitrifyLogo = "/vitrify.jpg";
 const tg3 = "/tg3.png";
 const lifelinkr = "/lifelinkr.png";
-const tg3Logo = "/tg3-logo.png";
-const vitrify = "/vitrify.png";
+import chat from "/chatapp.png";
 import cvc from "/cvc.png";
+import code from "/code.png";
 
 const bracketsLogo = "/brackets.svg";
 
@@ -79,7 +76,7 @@ export const nodeData = {
   proj2: {
     title: "Real-Time Collaborative Code Editor",
     tag: "MERN • Socket.IO • Docker • AWS",
-    media: cvc,
+    media: code,
     link: "https://github.com/Ayush-0247/...",
     description:
       "A collaborative code editor with live multi-user editing, room-based collaboration, instant synchronization using Socket.IO, and a scalable Dockerized deployment on AWS.",
@@ -88,7 +85,7 @@ export const nodeData = {
   proj3: {
     title: "Real-Time Chat Application",
     tag: "React • Node.js • WebSockets",
-    media: cvc,
+    media: chat,
     link: "https://github.com/Ayush-0247/...",
     description:
       "A modern chat platform featuring instant messaging, typing indicators, online presence, and a responsive React interface powered by WebSockets.",
