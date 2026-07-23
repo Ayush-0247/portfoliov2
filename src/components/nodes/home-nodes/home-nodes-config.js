@@ -198,7 +198,7 @@ export const desktopEdges = [
     targetHandle: "bottom",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "intro-t3",
@@ -208,7 +208,7 @@ export const desktopEdges = [
     targetHandle: "left",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "t3-e3",
@@ -218,7 +218,7 @@ export const desktopEdges = [
     targetHandle: "bottom",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "t3-t1",
@@ -228,7 +228,7 @@ export const desktopEdges = [
     targetHandle: "left",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "t1-e1",
@@ -238,7 +238,7 @@ export const desktopEdges = [
     targetHandle: "top",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "t1-t2",
@@ -248,7 +248,7 @@ export const desktopEdges = [
     targetHandle: "left",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "t2-e2",
@@ -258,7 +258,7 @@ export const desktopEdges = [
     targetHandle: "bottom",
     type: "straight",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "intro-4",
@@ -267,7 +267,7 @@ export const desktopEdges = [
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
   {
     id: "intro-6",
@@ -276,7 +276,7 @@ export const desktopEdges = [
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
   {
     id: "intro-linkedin",
@@ -285,7 +285,7 @@ export const desktopEdges = [
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
   {
     id: "intro-5",
@@ -294,7 +294,7 @@ export const desktopEdges = [
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
   {
     id: "intro-7",
@@ -303,7 +303,7 @@ export const desktopEdges = [
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
 ];
 
@@ -384,7 +384,7 @@ export const mobileEdges = [
     sourceHandle: "experience-left",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "5,5" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "e-t1-e1",
@@ -393,7 +393,7 @@ export const mobileEdges = [
     sourceHandle: "right",
     type: "smoothstep",
     animated: true,
-    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "5,5" },
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "e-t1-t2",
@@ -401,7 +401,8 @@ export const mobileEdges = [
     target: "t2",
     sourceHandle: "bottom",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "e-t2-e2",
@@ -409,7 +410,8 @@ export const mobileEdges = [
     target: "e2",
     sourceHandle: "right",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "e-t2-t3",
@@ -417,7 +419,8 @@ export const mobileEdges = [
     target: "t3",
     sourceHandle: "bottom",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "e-t3-e3",
@@ -425,7 +428,8 @@ export const mobileEdges = [
     target: "e3",
     sourceHandle: "right",
     type: "straight",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-indigo-purple)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(168, 85, 247, 0.45))" },
   },
   {
     id: "e1-4",
@@ -433,7 +437,8 @@ export const mobileEdges = [
     target: "4",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
   {
     id: "e1-6",
@@ -441,7 +446,8 @@ export const mobileEdges = [
     target: "6",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
   {
     id: "e1-5",
@@ -449,7 +455,8 @@ export const mobileEdges = [
     target: "5",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
   {
     id: "e1-7",
@@ -457,6 +464,7 @@ export const mobileEdges = [
     target: "7",
     sourceHandle: "projects-right",
     type: "smoothstep",
-    style: { stroke: "#000", strokeWidth: 2 },
+    animated: true,
+    style: { stroke: "url(#edge-grad-blue-teal)", strokeWidth: 2.5, filter: "drop-shadow(0px 0px 4px rgba(20, 184, 166, 0.45))" },
   },
 ];

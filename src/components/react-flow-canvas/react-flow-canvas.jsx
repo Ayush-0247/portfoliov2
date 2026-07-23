@@ -9,6 +9,7 @@ import {
   useReactFlow,
   Controls,
   Panel,
+  Background,
 } from "@xyflow/react";
 
 import { useCallback, useEffect, useState, useContext } from "react";
@@ -175,22 +176,37 @@ function Flow({ nodeTypes }) {
         padding: 0.3,
         duration: 800,
       }}
-      style={{ backgroundImage: whiteDotBg }}
+      style={{ background: "transparent" }}
       proOptions={{ hideAttribution: true }}
     >
-      <Controls className="bg-white! border-2! border-black! shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]! rounded-none! text-black!" />
+      <Background variant="dots" color="rgba(15, 23, 42, 0.05)" gap={24} size={1} />
+      
+      <svg className="absolute w-0 h-0 pointer-events-none">
+        <defs>
+          <linearGradient id="edge-grad-indigo-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#4f46e5" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#9333ea" stopOpacity="0.6" />
+          </linearGradient>
+          <linearGradient id="edge-grad-blue-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#2563eb" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#0d9488" stopOpacity="0.6" />
+          </linearGradient>
+        </defs>
+      </svg>
 
-      {/* ── Nav Widget — always visible ── */}
+      <Controls className="bg-white/40! backdrop-blur-md! border! border-slate-200/50! shadow-xl! rounded-xl! text-slate-800! overflow-hidden! [&_button]:border-slate-200/30! [&_button]:hover:bg-white/30! [&_svg]:fill-slate-600!" />
+
+      {/* ── Nav Widget ── */}
       <Panel position="bottom-right" className="mb-6 mr-4">
         <div
           aria-label={navSections.map((section) => section.label).join(", ")}
-          className="flex items-center gap-px bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+          className="flex items-center gap-1.5 p-1.5 bg-white/40 backdrop-blur-md border border-slate-200/50 shadow-xl rounded-full overflow-hidden"
         >
           {/* GitHub icon */}
           <button
             onClick={() => focusNode("git")}
             title="GitHub"
-            className="flex items-center justify-center w-9 h-9 text-black hover:bg-black hover:text-white transition-colors duration-150"
+            className="flex items-center justify-center w-9 h-9 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/30 transition-all duration-200 cursor-pointer"
           >
             <FaGithub size={16} />
           </button>
@@ -199,7 +215,7 @@ function Flow({ nodeTypes }) {
           <button
             onClick={() => focusNode("linkedin")}
             title="LinkedIn"
-            className="flex items-center justify-center w-9 h-9 border-l border-stone-200 text-black hover:bg-black hover:text-white transition-colors duration-150"
+            className="flex items-center justify-center w-9 h-9 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/30 transition-all duration-200 cursor-pointer"
           >
             <FaLinkedin size={16} />
           </button>
@@ -208,7 +224,7 @@ function Flow({ nodeTypes }) {
           <button
             onClick={() => focusNode("e3")}
             title="Experience"
-            className="flex items-center justify-center h-9 px-3 border-l-2 border-black font-mono text-[10px] font-bold text-black hover:bg-black hover:text-white transition-colors duration-150 tracking-widest uppercase"
+            className="flex items-center justify-center h-9 px-4 rounded-full font-mono text-[10px] font-bold text-slate-700 hover:text-slate-900 hover:bg-white/30 transition-all duration-200 tracking-widest uppercase cursor-pointer"
           >
             Exp
           </button>
@@ -216,17 +232,19 @@ function Flow({ nodeTypes }) {
       </Panel>
 
       {isOnCanvasEditingAllowed && (
-        <Panel position="bottom-left" className="mb-4 ml-20 flex gap-2">
+        <Panel position="bottom-left" className="mb-4 ml-20 flex gap-2.5">
           <button
             onClick={onPaneClick}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-black font-mono text-xs font-black text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] transition-all"
+            className="flex items-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-md border border-slate-200/50 font-mono text-xs font-bold text-slate-700 rounded-xl hover:bg-white/60 hover:text-slate-950 transition-all shadow-md cursor-pointer"
           >
             Reset
           </button>
           <button
             onClick={() => setShowCoordinates(!showCoordinates)}
-            className={`flex items-center gap-2 px-4 py-2 border-2 border-black font-mono text-xs font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all ${
-              showCoordinates ? "bg-black text-white" : "bg-white text-black"
+            className={`flex items-center gap-2 px-4 py-2 backdrop-blur-md border font-mono text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer ${
+              showCoordinates
+                ? "bg-indigo-600/25 border-indigo-500/40 text-indigo-800"
+                : "bg-white/40 border-slate-200/50 text-slate-700 hover:bg-white/60"
             }`}
           >
             {showCoordinates ? "Hide XY" : "Show XY"}
@@ -235,18 +253,18 @@ function Flow({ nodeTypes }) {
             <>
               <button
                 onClick={onStraightenLines}
-                className="flex items-center gap-2 px-6 py-3 bg-indigo-600 border-2 border-black font-mono text-sm font-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-1 active:translate-y-1 active:shadow-none"
+                className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600/10 hover:bg-indigo-600/20 border border-indigo-500/30 font-mono text-xs font-bold text-indigo-700 rounded-xl shadow-md transition-all cursor-pointer"
               >
                 Snap & Straighten Lines
               </button>
               <button
                 onClick={onSavePositions}
                 disabled={isSaving}
-                className="flex items-center gap-2 px-6 py-3 bg-red-600 border-2 border-black font-mono text-sm font-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-1 active:translate-y-1 active:shadow-none disabled:opacity-50"
+                className="flex items-center gap-2 px-5 py-2.5 bg-rose-600/10 hover:bg-rose-600/20 border border-rose-500/30 font-mono text-xs font-bold text-rose-700 rounded-xl shadow-md transition-all disabled:opacity-50 cursor-pointer"
               >
                 {isSaving
-                  ? "Saving to Code..."
-                  : "Save Exact Positions to Code"}
+                  ? "Saving..."
+                  : "Save Exact Positions"}
               </button>
             </>
           )}
@@ -262,7 +280,14 @@ export default function ReactFlowCanvas({ nodeTypes }) {
   return (
     <DebugContext.Provider value={{ showCoordinates, setShowCoordinates }}>
       <ReactFlowProvider>
-        <Flow nodeTypes={nodeTypes} />
+        <div className="relative w-full h-full bg-[#f0f6ff] overflow-hidden">
+          {/* Animated blurred gradient blobs in background */}
+          <div className="absolute top-[5%] left-[10%] w-[380px] h-[380px] bg-indigo-500/20 rounded-full blur-[110px] animate-blob-1 pointer-events-none" />
+          <div className="absolute bottom-[10%] right-[15%] w-[480px] h-[480px] bg-purple-500/20 rounded-full blur-[130px] animate-blob-2 pointer-events-none" />
+          <div className="absolute top-[45%] left-[55%] w-[320px] h-[320px] bg-cyan-500/18 rounded-full blur-[100px] animate-blob-3 pointer-events-none" />
+          
+          <Flow nodeTypes={nodeTypes} />
+        </div>
       </ReactFlowProvider>
     </DebugContext.Provider>
   );
