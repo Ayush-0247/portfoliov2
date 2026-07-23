@@ -156,8 +156,8 @@ export const nodeData = {
   },
 
   contact: {
-    email: "email@example.com",
-    phone: "+91 12345 67890",
+    email: "",
+    phone: "",
     location: "India",
   },
 };
