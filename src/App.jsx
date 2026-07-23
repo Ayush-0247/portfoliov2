@@ -8,13 +8,27 @@ import { Analytics } from "@vercel/analytics/react";
 export default function App() {
   const [isCanvasView, setIsCanvasView] = useState(true);
 
-  // Automatically lock layout to list view on screens < 768px
+  // Automatically lock layout to list view on screens < 768px in portrait
+  // and switch to canvas mode on orientation shift to landscape
   useEffect(() => {
+    let lastOrientation = window.matchMedia("(orientation: portrait)").matches ? "portrait" : "landscape";
+
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+      const currentOrientation = isPortrait ? "portrait" : "landscape";
+
+      // If user rotated from portrait to landscape, automatically flip to canvas view
+      if (lastOrientation === "portrait" && currentOrientation === "landscape") {
+        setIsCanvasView(true);
+      }
+      // If user rotated from landscape to portrait and it's a mobile screen, force list view
+      else if (window.innerWidth < 768 && isPortrait) {
         setIsCanvasView(false);
       }
+      
+      lastOrientation = currentOrientation;
     };
+
     handleResize(); // run initially
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
