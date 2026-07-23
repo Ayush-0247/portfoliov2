@@ -66,10 +66,10 @@ export const nodeData = {
   },
 
   education: {
-    institute: "KIET Group of Institutions",
+    institute: "KIET Group of Institutions, Ghaziabad",
     degree: "B.Tech in Electronics & Communication Engineering",
     duration: "2024 - 2028",
-    cgpa: "7.67 CGPA",
+    // cgpa: "7.67 CGPA",
     details: [
       "Relevant Coursework: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks",
       "Frontend Development Lead at DSDL",
