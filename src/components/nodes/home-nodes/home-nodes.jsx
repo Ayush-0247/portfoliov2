@@ -393,7 +393,7 @@ function TechStackNode({ data, positionAbsoluteX, positionAbsoluteY }) {
   return (
     <div className="relative w-[600px] bg-white dark:bg-stone-800 border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
-      
+
       <div className="flex flex-col mb-4 border-b-2 border-black pb-3 w-full">
         <h3 className="text-2xl font-black text-black uppercase tracking-tight leading-none">
           {data.title || "Tech Stack"}
@@ -404,23 +404,24 @@ function TechStackNode({ data, positionAbsoluteX, positionAbsoluteY }) {
       </div>
 
       <div className="space-y-4">
-        {data.categories && data.categories.map((cat, idx) => (
-          <div key={idx} className="flex flex-col gap-2">
-            <h4 className="font-mono text-xs font-black uppercase text-stone-500 tracking-wider">
-              {cat.name}
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map((skill, sIdx) => (
-                <span 
-                  key={sIdx} 
-                  className="bg-white dark:bg-stone-900 border-2 border-black px-3 py-1 font-mono text-xs font-bold text-black dark:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all select-none"
-                >
-                  {skill}
-                </span>
-              ))}
+        {data.categories &&
+          data.categories.map((cat, idx) => (
+            <div key={idx} className="flex flex-col gap-2">
+              <h4 className="font-mono text-xs font-black uppercase text-stone-500 tracking-wider">
+                {cat.name}
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill, sIdx) => (
+                  <span
+                    key={sIdx}
+                    className="bg-white dark:bg-stone-900 border-2 border-black px-3 py-1 font-mono text-xs font-bold text-black dark:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all select-none"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
 
       <Handle
@@ -584,12 +585,14 @@ function GithubNode({ data, positionAbsoluteX, positionAbsoluteY }) {
       <div className="relative bg-white border-2 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 w-fit">
         <GitHubCalendar
           username={data.username}
+          year={2026}
           colorScheme="light"
           blockMargin={4}
           blockSize={14}
-          showTotalCount={false}
-          showColorLegend={false}
+          hideTotalCount={true}
+          hideColorLegend={true}
         />
+
         <Handle
           id="bottom"
           type="target"
@@ -614,7 +617,7 @@ const nodeTypes = {
   project: ProjectNode,
   social: SocialNode,
   github: GithubNode,
-  linkedin: LinkedInNode, 
+  linkedin: LinkedInNode,
   education: EducationNode,
   techstack: TechStackNode,
   resume: ResumeNode,
@@ -627,7 +630,7 @@ const nodeTypes = {
 //   github: GithubNode,
 //   linkedin: LinkedinNode,
 //   time: TimeNode,
- 
+
 // };
 export {
   IntroductionNode,
