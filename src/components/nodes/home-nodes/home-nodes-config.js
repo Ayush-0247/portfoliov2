@@ -65,6 +65,38 @@ export const nodeData = {
     media: cvc,
   },
 
+  education: {
+  institute: "KIET Group of Institutions",
+  degree: "B.Tech in Electronics & Communication Engineering",
+  duration: "2024 - 2028",
+  cgpa: "7.67 CGPA",
+  details: [
+    "Relevant Coursework: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks",
+    "Frontend Development Lead at DSDL",
+    "Built multiple MERN stack projects"
+  ],
+  // media: kiet, // optional logo
+  },
+
+  techStack: {
+    title: "Tech Stack",
+    subtitle: "Technologies I build with",
+    categories: [
+      {
+        name: "Frontend",
+        skills: ["React", "HTML5", "CSS3", "TailwindCSS", "JavaScript", "TypeScript", "Redux"]
+      },
+      {
+        name: "Backend & Databases",
+        skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs", "Socket.IO", "Mongoose"]
+      },
+      {
+        name: "Tools & DevOps",
+        skills: ["Git", "GitHub", "Docker", "AWS", "Postman", "Vercel"]
+      }
+    ]
+  },
+
   proj1: {
     title: "CipherVest Capital",
     tag: "FinTech Platform",
@@ -118,6 +150,12 @@ export const desktopNodes = [
     type: "github",
     position: { x: -1244, y: 8 },
     data: nodeData.github,
+  },
+  {
+    id: "git-visit",
+    type: "gitvisit",
+    position: { x: -1480, y: 100 },
+    data: {},
   },
   {
     id: "t3",
@@ -185,9 +223,68 @@ export const desktopNodes = [
     position: { x: -585, y: 651 },
     data: {},
   },
+  {
+  id: "edu",
+  type: "education",
+  position: { x: -1900, y: 400 },
+  data: nodeData.education,
+  },
+  {
+    id: "tech",
+    type: "techstack",
+    position: { x: -300, y: 780 },
+    data: nodeData.techStack,
+  },
+  {
+    id: "resume",
+    type: "resume",
+    position: { x: -960, y: 651 },
+    data: {},
+  },
 ];
 
-export const desktopEdges = [
+export const desktopEdges = [{
+  id: "intro-edu",
+  source: "1",
+  target: "edu",
+  sourceHandle: "education-right",
+  targetHandle: "right",
+  type: "smoothstep",
+  animated: true,
+  style: {
+    stroke: "#000",
+    strokeWidth: 2,
+    strokeDasharray: "6 3",
+  },
+},
+{
+  id: "intro-tech",
+  source: "1",
+  target: "tech",
+  sourceHandle: "education-right",
+  targetHandle: "left",
+  type: "smoothstep",
+  animated: true,
+  style: {
+    stroke: "#000",
+    strokeWidth: 2,
+    strokeDasharray: "6 3",
+  },
+},
+{
+  id: "intro-resume",
+  source: "1",
+  target: "resume",
+  sourceHandle: "projects",
+  targetHandle: "top",
+  type: "straight",
+  animated: true,
+  style: {
+    stroke: "#000",
+    strokeWidth: 2,
+    strokeDasharray: "6 3",
+  },
+},
   {
     id: "intro-git",
     source: "1",
@@ -195,6 +292,16 @@ export const desktopEdges = [
     sourceHandle: "github",
     targetHandle: "bottom",
     type: "straight",
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  },
+  {
+    id: "git-gitvisit",
+    source: "git",
+    target: "git-visit",
+    sourceHandle: "left-source",
+    targetHandle: "right",
+    type: "smoothstep",
     animated: true,
     style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
   },
@@ -307,6 +414,24 @@ export const desktopEdges = [
 
 export const mobileNodes = [
   {
+  id: "edu",
+  type: "education",
+  position: { x: -140, y: 1850 },
+  data: nodeData.education,
+  },
+  {
+    id: "tech",
+    type: "techstack",
+    position: { x: -140, y: 2614 },
+    data: nodeData.techStack,
+  },
+  {
+    id: "resume",
+    type: "resume",
+    position: { x: -140, y: 2950 },
+    data: {},
+  },
+  {
     id: "1",
     type: "introduction",
     position: { x: -225, y: -100 },
@@ -375,6 +500,48 @@ export const mobileNodes = [
 ];
 
 export const mobileEdges = [
+  {
+    id: "intro-edu-mobile",
+    source: "1",
+    target: "edu",
+    sourceHandle: "education-right",
+    targetHandle: "right",
+    type: "smoothstep",
+    animated: true,
+    style: {
+      stroke: "#000",
+      strokeWidth: 2,
+      strokeDasharray: "6 3",
+    },
+  },
+  {
+    id: "intro-tech-mobile",
+    source: "1",
+    target: "tech",
+    sourceHandle: "education-right",
+    targetHandle: "left",
+    type: "smoothstep",
+    animated: true,
+    style: {
+      stroke: "#000",
+      strokeWidth: 2,
+      strokeDasharray: "6 3",
+    },
+  },
+  {
+    id: "intro-resume-mobile",
+    source: "1",
+    target: "resume",
+    sourceHandle: "projects",
+    targetHandle: "top",
+    type: "straight",
+    animated: true,
+    style: {
+      stroke: "#000",
+      strokeWidth: 2,
+      strokeDasharray: "6 3",
+    },
+  },
   {
     id: "e1-t1",
     source: "1",
