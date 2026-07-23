@@ -66,16 +66,16 @@ export const nodeData = {
   },
 
   education: {
-  institute: "KIET Group of Institutions",
-  degree: "B.Tech in Electronics & Communication Engineering",
-  duration: "2024 - 2028",
-  cgpa: "7.67 CGPA",
-  details: [
-    "Relevant Coursework: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks",
-    "Frontend Development Lead at DSDL",
-    "Built multiple MERN stack projects"
-  ],
-  // media: kiet, // optional logo
+    institute: "KIET Group of Institutions",
+    degree: "B.Tech in Electronics & Communication Engineering",
+    duration: "2024 - 2028",
+    cgpa: "7.67 CGPA",
+    details: [
+      "Relevant Coursework: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks",
+      "Frontend Development Lead at DSDL",
+      "Built multiple MERN stack projects",
+    ],
+    // media: kiet, // optional logo
   },
 
   techStack: {
@@ -84,17 +84,35 @@ export const nodeData = {
     categories: [
       {
         name: "Frontend",
-        skills: ["React", "HTML5", "CSS3", "TailwindCSS", "JavaScript"]
+        skills: ["React", "HTML5", "CSS3", "TailwindCSS", "JavaScript"],
       },
       {
         name: "Backend & Databases",
-        skills: ["Node.js", "Express.js", "MongoDB", "MYSQL",  "PostgreSQL", "REST APIs", "Socket.IO", "Mongoose"]
+        skills: [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "MYSQL",
+          "PostgreSQL",
+          "REST APIs",
+          "Socket.IO",
+          "Mongoose",
+        ],
       },
       {
         name: "Tools & DevOps",
-        skills: ["Git", "GitHub", "Docker", "AWS", "Postman", "Vercel" , "Render", "Netlify"]
-      }
-    ]
+        skills: [
+          "Git",
+          "GitHub",
+          "Docker",
+          "AWS",
+          "Postman",
+          "Vercel",
+          "Render",
+          "Netlify",
+        ],
+      },
+    ],
   },
 
   proj1: {
@@ -135,6 +153,12 @@ export const nodeData = {
 
   github: {
     username: "Ayush-0247",
+  },
+
+  contact: {
+    email: "email@example.com",
+    phone: "+91 12345 67890",
+    location: "India",
   },
 };
 
@@ -224,10 +248,10 @@ export const desktopNodes = [
     data: {},
   },
   {
-  id: "edu",
-  type: "education",
-  position: { x: -1900, y: 400 },
-  data: nodeData.education,
+    id: "edu",
+    type: "education",
+    position: { x: -1900, y: 400 },
+    data: nodeData.education,
   },
   {
     id: "tech",
@@ -243,48 +267,49 @@ export const desktopNodes = [
   },
 ];
 
-export const desktopEdges = [{
-  id: "intro-edu",
-  source: "1",
-  target: "edu",
-  sourceHandle: "education-right",
-  targetHandle: "right",
-  type: "smoothstep",
-  animated: true,
-  style: {
-    stroke: "#000",
-    strokeWidth: 2,
-    strokeDasharray: "6 3",
+export const desktopEdges = [
+  {
+    id: "intro-edu",
+    source: "1",
+    target: "edu",
+    sourceHandle: "education-right",
+    targetHandle: "right",
+    type: "smoothstep",
+    animated: true,
+    style: {
+      stroke: "#000",
+      strokeWidth: 2,
+      strokeDasharray: "6 3",
+    },
   },
-},
-{
-  id: "intro-tech",
-  source: "1",
-  target: "tech",
-  sourceHandle: "education-right",
-  targetHandle: "left",
-  type: "smoothstep",
-  animated: true,
-  style: {
-    stroke: "#000",
-    strokeWidth: 2,
-    strokeDasharray: "6 3",
+  {
+    id: "intro-tech",
+    source: "1",
+    target: "tech",
+    sourceHandle: "education-right",
+    targetHandle: "left",
+    type: "smoothstep",
+    animated: true,
+    style: {
+      stroke: "#000",
+      strokeWidth: 2,
+      strokeDasharray: "6 3",
+    },
   },
-},
-{
-  id: "intro-resume",
-  source: "1",
-  target: "resume",
-  sourceHandle: "projects",
-  targetHandle: "top",
-  type: "straight",
-  animated: true,
-  style: {
-    stroke: "#000",
-    strokeWidth: 2,
-    strokeDasharray: "6 3",
+  {
+    id: "intro-resume",
+    source: "1",
+    target: "resume",
+    sourceHandle: "projects",
+    targetHandle: "top",
+    type: "straight",
+    animated: true,
+    style: {
+      stroke: "#000",
+      strokeWidth: 2,
+      strokeDasharray: "6 3",
+    },
   },
-},
   {
     id: "intro-git",
     source: "1",
@@ -414,10 +439,10 @@ export const desktopEdges = [{
 
 export const mobileNodes = [
   {
-  id: "edu",
-  type: "education",
-  position: { x: -140, y: 1850 },
-  data: nodeData.education,
+    id: "edu",
+    type: "education",
+    position: { x: -140, y: 1850 },
+    data: nodeData.education,
   },
   {
     id: "tech",

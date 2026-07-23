@@ -4,7 +4,13 @@ import { Handle, Position } from "@xyflow/react";
 const pfp = "/pfp.jpeg";
 import pfp2 from "/pfp2.jpg";
 import { GitHubCalendar } from "react-github-calendar";
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaPhone,
+  FaDownload,
+} from "react-icons/fa";
 import { useState } from "react";
 import { useDebug } from "./debug-context";
 
@@ -279,36 +285,54 @@ function ProjectNode({ data, positionAbsoluteX, positionAbsoluteY }) {
   );
 }
 
-function SocialNode({ positionAbsoluteX, positionAbsoluteY }) {
+function SocialNode({ data, positionAbsoluteX, positionAbsoluteY }) {
+  const email = data?.email ?? "email@example.com";
+  const phone = data?.phone ?? "+91 12345 67890";
+
+  const getPhoneLink = () => phone.replace(/\s+/g, "");
+
   return (
     <div className="relative group">
       <CoordinateBadge x={positionAbsoluteX} y={positionAbsoluteY} />
       <div className="absolute inset-0 bg-black rounded-tr-2xl rounded-br-2xl translate-x-2 translate-y-2" />
 
-      <div className="relative bg-white border-2 border-black p-4 flex gap-6 items-center rounded-tr-2xl rounded-br-2xl rounded-tl-none rounded-bl-none">
+      <div className="relative bg-white border-2 border-black p-4 flex flex-wrap gap-3 items-center rounded-tr-2xl rounded-br-2xl rounded-tl-none rounded-bl-none">
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-black" />
 
         <a
           href="https://github.com/Ayush-0247"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black hover:text-gray-600 hover:scale-110 transition-transform"
+          className="flex items-center gap-2 rounded border-2 border-black px-3 py-2 text-black hover:bg-slate-100 transition-all"
         >
-          <FaGithub size={24} />
+          <FaGithub size={18} />
+          <span className="text-xs font-black uppercase">GitHub</span>
         </a>
+
         <a
           href="https://linkedin.com/in/ayushraj2407"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-700 hover:text-blue-800 hover:scale-110 transition-transform"
+          className="flex items-center gap-2 rounded border-2 border-black px-3 py-2 text-blue-700 hover:bg-slate-100 hover:text-blue-800 transition-all"
         >
-          <FaLinkedin size={24} />
+          <FaLinkedin size={18} />
+          <span className="text-xs font-black uppercase">LinkedIn</span>
         </a>
+
         <a
-          href="mailto:email@example.com"
-          className="text-red-500 hover:text-red-600 hover:scale-110 transition-transform"
+          href={`mailto:${email}`}
+          className="flex items-center gap-2 rounded border-2 border-black px-3 py-2 text-red-500 hover:bg-slate-100 hover:text-red-600 transition-all"
         >
-          <FaEnvelope size={24} />
+          <FaEnvelope size={18} />
+          <span className="text-xs font-black uppercase">Email</span>
+        </a>
+
+        <a
+          href={`tel:${getPhoneLink()}`}
+          className="flex items-center gap-2 rounded border-2 border-black px-3 py-2 text-black hover:bg-slate-100 transition-all"
+        >
+          <FaPhone size={18} />
+          <span className="text-xs font-black uppercase">{phone}</span>
         </a>
 
         <Handle

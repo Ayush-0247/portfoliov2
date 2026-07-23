@@ -18,7 +18,7 @@ import {
   desktopEdges,
 } from "@/components/nodes/home-nodes/home-nodes-config";
 import { DebugContext } from "@/components/nodes/home-nodes/debug-context";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 import { isOnCanvasEditingAllowed } from "@/static/constant-vals";
 
 function Flow({ nodeTypes }) {
@@ -183,11 +183,29 @@ function Flow({ nodeTypes }) {
           aria-label={navSections.map((section) => section.label).join(", ")}
           className="flex items-center gap-px bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
         >
+          {/* Phone button */}
+          <a
+            href="tel:+911234567890"
+            title="Phone"
+            className="flex items-center justify-center h-9 px-3 text-black hover:bg-black hover:text-white transition-colors duration-150 tracking-widest uppercase"
+          >
+            <FaPhone size={16} />
+          </a>
+
+          {/* Email button */}
+          <a
+            href="mailto:email@example.com"
+            title="Email"
+            className="flex items-center justify-center h-9 px-3 border-l border-stone-200 text-black hover:bg-black hover:text-white transition-colors duration-150 tracking-widest uppercase"
+          >
+            <FaEnvelope size={16} />
+          </a>
+
           {/* GitHub icon */}
           <button
             onClick={() => focusNode("git")}
             title="GitHub"
-            className="flex items-center justify-center w-9 h-9 text-black hover:bg-black hover:text-white transition-colors duration-150"
+            className="flex items-center justify-center h-9 px-3 border-l border-stone-200 text-black hover:bg-black hover:text-white transition-colors duration-150"
           >
             <FaGithub size={16} />
           </button>
@@ -196,7 +214,7 @@ function Flow({ nodeTypes }) {
           <button
             onClick={() => focusNode("linkedin")}
             title="LinkedIn"
-            className="flex items-center justify-center w-9 h-9 border-l border-stone-200 text-black hover:bg-black hover:text-white transition-colors duration-150"
+            className="flex items-center justify-center h-9 px-3 border-l border-stone-200 text-black hover:bg-black hover:text-white transition-colors duration-150"
           >
             <FaLinkedin size={16} />
           </button>
@@ -205,7 +223,7 @@ function Flow({ nodeTypes }) {
           <button
             onClick={() => focusNode("e3")}
             title="Experience"
-            className="flex items-center justify-center h-9 px-3 border-l-2 border-black font-mono text-[10px] font-bold text-black hover:bg-black hover:text-white transition-colors duration-150 tracking-widest uppercase"
+            className="flex items-center justify-center h-9 px-3 border-l border-stone-200 font-mono text-[10px] font-bold text-black hover:bg-black hover:text-white transition-colors duration-150 tracking-widest uppercase"
           >
             Exp
           </button>
