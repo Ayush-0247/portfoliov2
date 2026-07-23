@@ -13,5 +13,5 @@ On the frontend, I use React and Next.js to deliver end-to-end features, and I e
 
 Outside of work, I spend time reading and thinking about backend systems, databases, and architectural trade-offs. I occasionally write about concepts that are common in theory but unfamiliar in practice, especially around data and system design
 
-- Vinayisactive: [https://vinayisactive.vercel.app](https://vinayisactive.vercel.app)  
-- X (Twitter): [https://x.com/vinayisactive](https://x.com/vinayisactive)  
+- Vinayisactive: [https://vinayisactive.vercel.app](https://vinayisactive.vercel.app)
+- LinkedIn: [https://linkedin.com/in/ayushraj2407](https://linkedin.com/in/ayushraj2407)

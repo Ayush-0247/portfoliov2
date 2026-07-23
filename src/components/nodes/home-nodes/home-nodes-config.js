@@ -1,72 +1,114 @@
 "use client";
 
-import type { Node, Edge } from "@xyflow/react";
-import fwl from "@/public/fwl.png";
-import uchs from "@/public/uchs.png";
-import vitrifyLogo from "@/public/vitrify.jpg";
+const fwl = "/fwl.png";
+const uchs = "/uchs.png";
+const vitrifyLogo = "/vitrify.jpg";
+const tg3 = "/tg3.png";
+const lifelinkr = "/lifelinkr.png";
+const tg3Logo = "/tg3-logo.png";
+const vitrify = "/vitrify.png";
+import cvc from "/cvc.png";
 
 const bracketsLogo = "/brackets.svg";
 
 export const nodeData = {
-  intro: { label: "Me" },
-  time1: { period: "2025/Dec - 2026/Jun" },
+  intro: {
+    label: "Me",
+  },
+
+  time1: {
+    period: "2026/Mar - 2026/Jul",
+  },
+
   exp1: {
-    company: "Flinque (TG3)",
-    role: "Backend Engineer",
+    company: "TG3 Agency",
+    role: "Frontend Developer Intern",
     details: [
-      "Structured and architected the backend for an influencer marketing SaaS platform, building a scalable multi-tenant system from scratch to production.",
-      "Developed real-time data pipelines for scraping, ingestion, and syncing via external services to keep data continuously updated.",
-      "Developed internal marketing tools for drip campaigns, and utm trackings, enabling the marketing team to run targeted campaigns and track their performance effectively.",
-       "Automated workflows using cron jobs and background processes, improving reliability and reducing manual intervention.",
-      "Integrated payment systems and subscription flows, aligning backend logic with the product’s revenue model.",
-      "Built an internal CMS/admin system to manage, monitor, and operate the platform efficiently.",
+      "Built modern, responsive interfaces for Flinque and Vitrify Software using React.js and Tailwind CSS.",
+      "Developed reusable component libraries, improving consistency and reducing development time across projects.",
+      "Integrated 30+ REST APIs and collaborated closely with backend developers to deliver production-ready features.",
+      "Resolved 15+ UI and functionality issues, improving application stability and user experience.",
+      "Optimized application performance and responsiveness across desktop and mobile devices.",
+      "Worked closely with designers and product teams to transform Figma designs into pixel-perfect interfaces.",
     ],
-    media: null,
+    media: tg3,
   },
-  time2: { period: "2025/Apr - 2026/Jun" },
+
+  time2: {
+    period: "2026/Jun - 2026/Sep",
+  },
+
   exp2: {
-    company: "Vitrify Softwares (TG3)",
-    role: "Full Stack Engineer",
+    company: "Lifelinkr",
+    role: "Software Engineering Intern",
     details: [
-      "Took ownership of the backend and rebuilt it from the ground up with a clean, modular architecture that actually scales.",
-      "Engineered core modules like billing and medical treatment workflows powering a live healthcare product used in IVF clinics.",
-      "Led and shipped a complete ART bank management system for Donor banks.",
-      "Plugged in marketing and tracking systems directly into the software, bridging the gap between Doctors and Patients.",
-      "Worked closely with doctors, turning raw feedback into practical features that improved the product in meaningful ways.",
-  ],
-    media: vitrifyLogo
-  },
-  time3: { period: "2026/Jun - Now" },
-  exp3: {
-    company: "Brackets",
-    role: "AI Engineer",
-    details: [
-      "Working on logistics platform features by processing third-party telematics data and implementing business logic for trip route visualization, stop detection, fuel events, and trip cost breakdowns",
-      "Implemented a payroll module that syncs with trips to automate payroll calculations",
-      "Designed analytics dashboards for mileage trends, ownership costs, and fleet performance metrics."
+      "Developed CRM and healthcare dashboard modules using React.js, Tailwind CSS, and JavaScript.",
+      "Integrated more than 30 REST APIs for patient, appointment, and clinic management workflows.",
+      "Built scalable UI components and improved overall dashboard usability.",
+      "Collaborated with cross-functional teams to ship production-ready healthcare features.",
+      "Worked with modern development workflows using Git, Postman, and RESTful architecture.",
     ],
-    media: bracketsLogo
+    media: lifelinkr,
   },
+
+  time3: {
+    period: "2026/Present",
+  },
+
+  exp3: {
+    company: "CipherVest Capital",
+    role: "Founder & CTO",
+    details: [
+      "Building a fintech platform focused on investment management, portfolio tracking, and financial analytics.",
+      "Leading architecture decisions across frontend and backend using the MERN stack.",
+      "Designing secure authentication, scalable APIs, and real-time financial dashboards.",
+      "Managing product development from idea to deployment while continuously adding new platform capabilities.",
+    ],
+    media: cvc,
+  },
+
   proj1: {
-    title: "Formwavelabs",
-    tag: "Productivity / Utility",
-    media: fwl,
-    link: "http://formwavelabs.vercel.app",
-    description: "FormWaveLabs lets you build multi-step forms with themes and enhanced design control"
+    title: "CipherVest Capital",
+    tag: "FinTech Platform",
+    media: cvc,
+    link: "https://ciphervestcapital.in",
+    description:
+      "A full-stack fintech platform featuring secure JWT authentication, role-based access control, portfolio management, analytics dashboards, and REST APIs built with the MERN stack.",
   },
+
   proj2: {
-    title: "useCustomHookSpace",
-    tag: "DX (Developer Experience)",
-    media: uchs,
-    link: "https://usecustomhookspace.vercel.app",
-    description: "A collection of ready-to-use React hooks and utilities to supercharge your development workflow."
+    title: "Real-Time Collaborative Code Editor",
+    tag: "MERN • Socket.IO • Docker • AWS",
+    media: cvc,
+    link: "https://github.com/Ayush-0247/...",
+    description:
+      "A collaborative code editor with live multi-user editing, room-based collaboration, instant synchronization using Socket.IO, and a scalable Dockerized deployment on AWS.",
   },
+
+  proj3: {
+    title: "Real-Time Chat Application",
+    tag: "React • Node.js • WebSockets",
+    media: cvc,
+    link: "https://github.com/Ayush-0247/...",
+    description:
+      "A modern chat platform featuring instant messaging, typing indicators, online presence, and a responsive React interface powered by WebSockets.",
+  },
+
+  proj4: {
+    title: "Banking System Backend",
+    tag: "Node.js • Express • MongoDB",
+    media: cvc,
+    link: "https://github.com/Ayush-0247/...",
+    description:
+      "A secure banking backend implementing JWT authentication, account management, money transfers, transaction history, email notifications, blacklist-based logout, and a modular MVC architecture.",
+  },
+
   github: {
-    username: "vinayisactive"
-  }
+    username: "Ayush-0247",
+  },
 };
 
-export const desktopNodes: Node[] = [
+export const desktopNodes = [
   {
     id: "1",
     type: "introduction",
@@ -100,7 +142,7 @@ export const desktopNodes: Node[] = [
   {
     id: "e1",
     type: "experience",
-    position: { x: 425, y: 596 }, 
+    position: { x: 425, y: 596 },
     data: nodeData.exp1,
   },
   {
@@ -118,24 +160,36 @@ export const desktopNodes: Node[] = [
   {
     id: "4",
     type: "project",
-    position: { x: -1109, y: 781 },
+    position: { x: -1220, y: 760 },
     data: nodeData.proj1,
   },
   {
     id: "5",
     type: "project",
-    position: { x: -936, y: 946 },
+    position: { x: -620, y: 760 },
     data: nodeData.proj2,
   },
   {
-    id: "twitter",
-    type: "twitter",
+    id: "6",
+    type: "project",
+    position: { x: -1220, y: 1020 },
+    data: nodeData.proj3,
+  },
+  {
+    id: "7",
+    type: "project",
+    position: { x: -620, y: 1020 },
+    data: nodeData.proj4,
+  },
+  {
+    id: "linkedin",
+    type: "linkedin",
     position: { x: -585, y: 651 },
     data: {},
-  }
+  },
 ];
 
-export const desktopEdges: Edge[] = [
+export const desktopEdges = [
   {
     id: "intro-git",
     source: "1",
@@ -216,9 +270,18 @@ export const desktopEdges: Edge[] = [
     style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
   },
   {
-    id: "intro-twitter",
+    id: "intro-6",
     source: "1",
-    target: "twitter",
+    target: "6",
+    sourceHandle: "projects",
+    type: "smoothstep",
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  },
+  {
+    id: "intro-linkedin",
+    source: "1",
+    target: "linkedin",
     sourceHandle: "projects",
     type: "smoothstep",
     animated: true,
@@ -232,10 +295,19 @@ export const desktopEdges: Edge[] = [
     type: "smoothstep",
     animated: true,
     style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
-  }
+  },
+  {
+    id: "intro-7",
+    source: "1",
+    target: "7",
+    sourceHandle: "projects",
+    type: "smoothstep",
+    animated: true,
+    style: { stroke: "#000", strokeWidth: 2, strokeDasharray: "6 3" },
+  },
 ];
 
-export const mobileNodes: Node[] = [
+export const mobileNodes = [
   {
     id: "1",
     type: "introduction",
@@ -281,18 +353,30 @@ export const mobileNodes: Node[] = [
   {
     id: "4",
     type: "project",
-    position: { x: -200, y: 2014 },
+    position: { x: -260, y: 2014 },
     data: nodeData.proj1,
   },
   {
     id: "5",
     type: "project",
-    position: { x: 160, y: 2014 },
+    position: { x: 220, y: 2014 },
     data: nodeData.proj2,
+  },
+  {
+    id: "6",
+    type: "project",
+    position: { x: -260, y: 2314 },
+    data: nodeData.proj3,
+  },
+  {
+    id: "7",
+    type: "project",
+    position: { x: 220, y: 2314 },
+    data: nodeData.proj4,
   },
 ];
 
-export const mobileEdges: Edge[] = [
+export const mobileEdges = [
   {
     id: "e1-t1",
     source: "1",
@@ -352,9 +436,25 @@ export const mobileEdges: Edge[] = [
     style: { stroke: "#000", strokeWidth: 2 },
   },
   {
+    id: "e1-6",
+    source: "1",
+    target: "6",
+    sourceHandle: "projects-right",
+    type: "smoothstep",
+    style: { stroke: "#000", strokeWidth: 2 },
+  },
+  {
     id: "e1-5",
     source: "1",
     target: "5",
+    sourceHandle: "projects-right",
+    type: "smoothstep",
+    style: { stroke: "#000", strokeWidth: 2 },
+  },
+  {
+    id: "e1-7",
+    source: "1",
+    target: "7",
     sourceHandle: "projects-right",
     type: "smoothstep",
     style: { stroke: "#000", strokeWidth: 2 },
